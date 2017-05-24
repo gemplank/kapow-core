@@ -66,8 +66,44 @@ require_once 'php/class-notices-admin.php';
 
 // WP Admin.
 require_once 'php/class-controller-admin.php';
-require_once 'php/comments/comments.php';
-require_once 'php/dashboard/dashboard-widgets.php';
+require_once 'php/comments/class-comments.php';
+require_once 'php/dashboard/class-dashboard-widgets.php';
+require_once 'php/hosting/hosting-wp-engine.php';
+
+// Content.
+// require_once 'php/class-controller-content.php'; // TODO.
+// require_once 'php/content/post-content-clean.php';
+// require_once 'php/editor/show-editor-on-posts-page.php';
+// require_once 'php/editor/tinymce.php';
+// require_once 'php/emoji/emoji.php';
+// require_once 'php/post-formats/post-formats.php';
+
+// Formatting.
+// require_once 'php/class-controller-formatting.php'; // TODO.
+// require_once 'php/formatting/body-classes.php';
+// require_once 'php/formatting/iframe.php';
+// require_once 'php/formatting/responsive-embeds.php';
+
+// Permalinks.
+// require_once 'php/class-controller-permalinks.php'; // TODO.
+// require_once 'php/post/add-blog-to-post-slug.php';
+
+// Security.
+// require_once 'php/class-controller-security.php'; // TODO.
+// require_once 'php/security/limit-login-attempts.php';
+// require_once 'php/security/login-one-user-instance.php';
+
+// SEO.
+// require_once 'php/class-controller-seo.php'; // TODO.
+// require_once 'php/seo/wpml-bing-compatible-header.php';
+// require_once 'php/seo/wpml-set-content-language.php';
+// require_once 'php/seo/yoast-wpml-alternate-links-to-site-map.php';
+// require_once 'php/seo/yoast-wpml-sitemap-per-translation.php';
+
+// Users.
+// require_once 'php/class-controller-users.php'; // TODO.
+// require_once 'php/user/disable-admin-bar.php';
+
 
 /**
  * Namespaces
@@ -84,16 +120,111 @@ use kapow\kapow_core\Notices_Admin;
 use kapow\kapow_core\Controller_Admin;
 use kapow\kapow_core\Comments;
 use kapow\kapow_core\Dashboard_Widgets;
+use kapow\kapow_core\Hosting; // TODO.
+
+// Content.
+use kapow\kapow_core\Controller_Content; // TODO.
+use kapow\kapow_core\Post_Content_Clean; // TODO.
+use kapow\kapow_core\Show_Editor_On_Posts_Page; // TODO.
+use kapow\kapow_core\TinyMCE; // TODO.
+use kapow\kapow_core\Emoji; // TODO.
+use kapow\kapow_core\Post_Formats; // TODO.
+
+// Formatting.
+use kapow\kapow_core\Controller_Formatting; // TODO.
+use kapow\kapow_core\Body_Classes; // TODO.
+use kapow\kapow_core\Fames; // TODO.
+use kapow\kapow_core\Responsive_Embeds; // TODO.
+
+// Permalinks.
+use kapow\kapow_core\Controller_Permalinks; // TODO.
+use kapow\kapow_core\Post_Slug; // TODO.
+
+// Security.
+use kapow\kapow_core\Controller_Security; // TODO.
+use kapow\kapow_core\Limit_Login_Attempts; // TODO.
+use kapow\kapow_core\Login_One_User_Instance; // TODO.
+
+// SEO.
+use kapow\kapow_core\Controller_SEO; // TODO.
+use kapow\kapow_core\Bing_Header; // TODO.
+use kapow\kapow_core\Content_Langauge; // TODO.
+use kapow\kapow_core\Site_Map_Links; // TODO.
+use kapow\kapow_core\Site_Map_Per_Langauge; // TODO.
+
+// Users.
+use kapow\kapow_core\Controller_Users; // TODO.
+use kapow\kapow_core\Disable_Admin_Bar; // TODO.
 
 /**
  * Instances
  */
-$comments                 = new Comments();
-$dashboard_widgets        = new Dashboard_Widgets();
-$controller_admin         = new Controller_Admin(
+
+// WP Admin.
+$comments           = new Comments();
+$dashboard_widgets  = new Dashboard_Widgets();
+// $hosting            = new Hosting(); // TODO.
+$controller_admin   = new Controller_Admin(
 	$comments,
-	$dashboard_widgets
+	$dashboard_widgets//,
+	// $hosting
 );
+
+// Content.
+// $post_content_clean        = new Post_Content_Clean(); // TODO.
+// $show_editor_on_posts_page = new Show_Editor_On_Posts_Page(); // TODO.
+// $tinymce                   = new TinyMCE(); // TODO.
+// $emoji                     = new Emoji(); // TODO.
+// $post_formats              = new Post_Formats(); // TODO.
+// $controller_content        = new Controller_Content(
+// 	$post_content_clean,
+// 	$show_editor_on_posts_page,
+// 	$tinymce,
+// 	$emoji,
+// 	$post_formats
+// );
+
+// Formatting.
+// $body_classes          = new Body_Classes(); // TODO.
+// $frames                = new iFrames(); // TODO.
+// $responsive_embeds     = new Responsive_Embeds(); // TODO.
+// $controller_formatting = new Controller_Formatting(
+// 	$body_classes,
+// 	$frames,
+// 	$responsive_embeds
+// );
+
+// Permalinks.
+// $post_slug             = new Post_Slug(); // TODO.
+// $controller_permalinks = new Controller_Permalinks(
+// 	$post_slug
+// );
+
+// Security.
+// $limit_login_attempts    = new Limit_Login_Attempts(); // TODO.
+// $login_one_user_instance = new Login_One_User_Instance(); // TODO.
+// $controller_security     = new Controller_Security(
+// 	$limit_login_attempts,
+// 	$login_one_user_instance
+// );
+
+// SEO.
+// $bing_header           = new Bing_Header(); // TODO.
+// $content_language      = new Content_Langauge(); // TODO.
+// $site_map_links        = new Site_Map_Links(); // TODO.
+// $site_map_per_langauge = new Site_Map_Per_Langauge(); // TODO.
+// $controller_seo        = new Controller_SEO(
+// 	$bing_header,
+// 	$content_language,
+// 	$site_map_links,
+// 	$site_map_per_langauge
+// );
+
+// Users.
+// $disable_admin_bar = new Disable_Admin_Bar(); // TODO.
+// $controller_users  = new Controller_Users(
+// 	$disable_admin_bar
+// );
 
 // The main plugin.
 $settings                 = new Settings();
@@ -103,31 +234,14 @@ $controller_main          = new Controller_Main(
 	$settings,
 	$controller_assets,
 	$notices_admin,
-	$controller_admin
+	$controller_admin//,
+	// $controller_content,
+	// $controller_formatting,
+	// $controller_permalinks,
+	// $controller_security,
+	// $controller_seo,
+	// $controller_users
 );
 
 // Go.
 $controller_main->run();
-
-// TODO:
-// Make all the below class based. However we don't want the controller being
-// overloaded, so suggest we break it up into other controllers, such as
-// `$controller_security->run()` etc...
-require_once 'php/content/post-content-clean.php';
-
-require_once 'php/editor/show-editor-on-posts-page.php';
-require_once 'php/editor/tinymce.php';
-require_once 'php/emoji/emoji.php';
-require_once 'php/formatting/body-classes.php';
-require_once 'php/formatting/iframe.php';
-require_once 'php/formatting/responsive-embeds.php';
-require_once 'php/hosting/hosting-wp-engine.php';
-require_once 'php/post/add-blog-to-post-slug.php';
-require_once 'php/post-formats/post-formats.php';
-require_once 'php/security/limit-login-attempts.php';
-require_once 'php/security/login-one-user-instance.php';
-require_once 'php/seo/wpml-bing-compatible-header.php';
-require_once 'php/seo/wpml-set-content-language.php';
-require_once 'php/seo/yoast-wpml-alternate-links-to-site-map.php';
-require_once 'php/seo/yoast-wpml-sitemap-per-translation.php';
-require_once 'php/user/disable-admin-bar.php';
