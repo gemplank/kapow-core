@@ -78,6 +78,15 @@ class Controller_Main {
 	private $controller_permalinks;
 
 	/**
+	 * Control Security.
+	 *
+	 * @var 	object
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $controller_security;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param Settings              $settings              Define the settings page.
@@ -87,6 +96,7 @@ class Controller_Main {
 	 * @param Controller_Content    $controller_content    Control Content.
 	 * @param Controller_Formatting $controller_formatting Control Formatting.
 	 * @param Controller_Permalinks $controller_permalinks Control Permalinks.
+	 * @param Controller_Security   $controller_security   Control Security.
 	 *
 	 * @since 0.1.0
 	 */
@@ -97,7 +107,8 @@ class Controller_Main {
 		Controller_Admin $controller_admin,
 		Controller_Content $controller_content,
 		Controller_Formatting $controller_formatting,
-		Controller_Permalinks $controller_permalinks
+		Controller_Permalinks $controller_permalinks,
+		Controller_Security $controller_security
 	) {
 		$this->settings              = $settings;
 		$this->controller_assets     = $controller_assets;
@@ -106,6 +117,7 @@ class Controller_Main {
 		$this->controller_content    = $controller_content;
 		$this->controller_formatting = $controller_formatting;
 		$this->controller_permalinks = $controller_permalinks;
+		$this->controller_security  = $controller_security;
 	}
 
 	/**
@@ -127,5 +139,6 @@ class Controller_Main {
 		$this->controller_content->run();
 		$this->controller_formatting->run();
 		$this->controller_permalinks->run();
+		$this->controller_security->run();
 	}
 }

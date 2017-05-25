@@ -10,7 +10,7 @@
 namespace kapow\kapow_core;
 
 /**
- * The main loader for this permalinks
+ * The main loader for the permalinks
  */
 class Controller_Permalinks {
 

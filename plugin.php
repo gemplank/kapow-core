@@ -89,9 +89,9 @@ require_once 'php/class-controller-permalinks.php';
 require_once 'php/post/class-post-slug.php';
 
 // Security.
-// require_once 'php/class-controller-security.php'; // TODO.
-// require_once 'php/security/limit-login-attempts.php';
-// require_once 'php/security/login-one-user-instance.php';
+require_once 'php/class-controller-security.php';
+require_once 'php/security/class-limit-login-attempts.php';
+require_once 'php/security/class-login-one-user-instance.php';
 
 // SEO.
 // require_once 'php/class-controller-seo.php'; // TODO.
@@ -141,9 +141,9 @@ use kapow\kapow_core\Controller_Permalinks;
 use kapow\kapow_core\Post_Slug;
 
 // Security.
-use kapow\kapow_core\Controller_Security; // TODO.
-use kapow\kapow_core\Limit_Login_Attempts; // TODO.
-use kapow\kapow_core\Login_One_User_Instance; // TODO.
+use kapow\kapow_core\Controller_Security;
+use kapow\kapow_core\Limit_Login_Attempts;
+use kapow\kapow_core\Login_One_User_Instance;
 
 // SEO.
 use kapow\kapow_core\Controller_SEO; // TODO.
@@ -201,12 +201,12 @@ $controller_permalinks = new Controller_Permalinks(
 );
 
 // Security.
-// $limit_login_attempts    = new Limit_Login_Attempts(); // TODO.
-// $login_one_user_instance = new Login_One_User_Instance(); // TODO.
-// $controller_security     = new Controller_Security(
-// 	$limit_login_attempts,
-// 	$login_one_user_instance
-// );
+$limit_login_attempts    = new Limit_Login_Attempts();
+$login_one_user_instance = new Login_One_User_Instance();
+$controller_security     = new Controller_Security(
+	$limit_login_attempts,
+	$login_one_user_instance
+);
 
 // SEO.
 // $bing_header           = new Bing_Header(); // TODO.
@@ -237,8 +237,8 @@ $controller_main          = new Controller_Main(
 	$controller_admin,
 	$controller_content,
 	$controller_formatting,
-	$controller_permalinks
-	// $controller_security,
+	$controller_permalinks,
+	$controller_security
 	// $controller_seo,
 	// $controller_users
 );
