@@ -51,12 +51,32 @@ class Controller_Main {
 	private $controller_admin;
 
 	/**
+	 * Control Content.
+	 *
+	 * @var 	object
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $controller_content;
+
+	/**
+	 * Control Formatting.
+	 *
+	 * @var 	object
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $controller_formatting;
+
+	/**
 	 * Constructor.
 	 *
-	 * @param Settings          $settings          Define the settings page.
-	 * @param Controller_Assets $controller_assets Enqueue the public and admin assets.
-	 * @param Notices_Admin     $notices_admin     Notices on the admin screens.
-	 * @param Controller_Admin  $controller_admin  Control Admin Behaviour.
+	 * @param Settings              $settings              Define the settings page.
+	 * @param Controller_Assets     $controller_assets     Enqueue the public and admin assets.
+	 * @param Notices_Admin         $notices_admin         Notices on the admin screens.
+	 * @param Controller_Admin      $controller_admin      Control Admin Behaviour.
+	 * @param Controller_Content    $controller_content    Control Content.
+	 * @param Controller_Formatting $controller_formatting Control Formatting.
 	 *
 	 * @since 0.1.0
 	 */
@@ -64,12 +84,16 @@ class Controller_Main {
 		Settings $settings,
 		Controller_Assets $controller_assets,
 		Notices_Admin $notices_admin,
-		Controller_Admin $controller_admin
+		Controller_Admin $controller_admin,
+		Controller_Content $controller_content,
+		Controller_Formatting $controller_formatting
 	) {
-		$this->settings           = $settings;
-		$this->controller_assets  = $controller_assets;
-		$this->notices_admin      = $notices_admin;
-		$this->controller_admin   = $controller_admin;
+		$this->settings              = $settings;
+		$this->controller_assets     = $controller_assets;
+		$this->notices_admin         = $notices_admin;
+		$this->controller_admin      = $controller_admin;
+		$this->controller_content    = $controller_content;
+		$this->controller_formatting = $controller_formatting;
 	}
 
 	/**
@@ -88,5 +112,7 @@ class Controller_Main {
 		$this->controller_assets->run();
 		// $this->notices_admin->run();
 		$this->controller_admin->run();
+		$this->controller_content->run();
+		$this->controller_formatting->run();
 	}
 }

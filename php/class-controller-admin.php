@@ -33,19 +33,31 @@ class Controller_Admin {
 	private $dashboard_widgets;
 
 	/**
+	 * Hosting.
+	 *
+	 * @var 	object
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $hosting;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param Comments          $comments          Comment behaviour.
 	 * @param Dashboard_Widgets $dashboard_widgets Dashboard Widgets.
+	 * @param Hosting           $hosting           Hosting.
 	 *
 	 * @since 0.1.0
 	 */
 	public function __construct(
 		Comments $comments,
-		Dashboard_Widgets $dashboard_widgets
+		Dashboard_Widgets $dashboard_widgets,
+		Hosting $hosting
 	) {
 		$this->comments          = $comments;
 		$this->dashboard_widgets = $dashboard_widgets;
+		$this->hosting           = $hosting;
 	}
 
 	/**
@@ -56,5 +68,6 @@ class Controller_Admin {
 	public function run() {
 		$this->comments->run();
 		$this->dashboard_widgets->run();
+		$this->hosting->run();
 	}
 }

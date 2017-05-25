@@ -68,21 +68,21 @@ require_once 'php/class-notices-admin.php';
 require_once 'php/class-controller-admin.php';
 require_once 'php/comments/class-comments.php';
 require_once 'php/dashboard/class-dashboard-widgets.php';
-require_once 'php/hosting/hosting-wp-engine.php';
+require_once 'php/hosting/class-hosting.php';
 
 // Content.
-// require_once 'php/class-controller-content.php'; // TODO.
-// require_once 'php/content/post-content-clean.php';
-// require_once 'php/editor/show-editor-on-posts-page.php';
-// require_once 'php/editor/tinymce.php';
-// require_once 'php/emoji/emoji.php';
-// require_once 'php/post-formats/post-formats.php';
+require_once 'php/class-controller-content.php';
+require_once 'php/content/class-post-content-clean.php';
+require_once 'php/editor/class-show-editor-on-posts-page.php';
+require_once 'php/editor/class-tinymce.php';
+require_once 'php/emoji/class-emoji.php';
+require_once 'php/post-formats/class-post-formats.php';
 
 // Formatting.
-// require_once 'php/class-controller-formatting.php'; // TODO.
-// require_once 'php/formatting/body-classes.php';
-// require_once 'php/formatting/iframe.php';
-// require_once 'php/formatting/responsive-embeds.php';
+require_once 'php/class-controller-formatting.php';
+require_once 'php/formatting/class-body-classes.php';
+require_once 'php/formatting/class-iframes.php';
+require_once 'php/formatting/class-responsive-embeds.php';
 
 // Permalinks.
 // require_once 'php/class-controller-permalinks.php'; // TODO.
@@ -120,21 +120,21 @@ use kapow\kapow_core\Notices_Admin;
 use kapow\kapow_core\Controller_Admin;
 use kapow\kapow_core\Comments;
 use kapow\kapow_core\Dashboard_Widgets;
-use kapow\kapow_core\Hosting; // TODO.
+use kapow\kapow_core\Hosting;
 
 // Content.
-use kapow\kapow_core\Controller_Content; // TODO.
-use kapow\kapow_core\Post_Content_Clean; // TODO.
-use kapow\kapow_core\Show_Editor_On_Posts_Page; // TODO.
-use kapow\kapow_core\TinyMCE; // TODO.
-use kapow\kapow_core\Emoji; // TODO.
-use kapow\kapow_core\Post_Formats; // TODO.
+use kapow\kapow_core\Controller_Content;
+use kapow\kapow_core\Post_Content_Clean;
+use kapow\kapow_core\Show_Editor_On_Posts_Page;
+use kapow\kapow_core\TinyMCE;
+use kapow\kapow_core\Emoji;
+use kapow\kapow_core\Post_Formats;
 
 // Formatting.
-use kapow\kapow_core\Controller_Formatting; // TODO.
-use kapow\kapow_core\Body_Classes; // TODO.
-use kapow\kapow_core\Fames; // TODO.
-use kapow\kapow_core\Responsive_Embeds; // TODO.
+use kapow\kapow_core\Controller_Formatting;
+use kapow\kapow_core\Body_Classes;
+use kapow\kapow_core\IFrames;
+use kapow\kapow_core\Responsive_Embeds;
 
 // Permalinks.
 use kapow\kapow_core\Controller_Permalinks; // TODO.
@@ -163,36 +163,36 @@ use kapow\kapow_core\Disable_Admin_Bar; // TODO.
 // WP Admin.
 $comments           = new Comments();
 $dashboard_widgets  = new Dashboard_Widgets();
-// $hosting            = new Hosting(); // TODO.
+$hosting            = new Hosting();
 $controller_admin   = new Controller_Admin(
 	$comments,
-	$dashboard_widgets//,
-	// $hosting
+	$dashboard_widgets,
+	$hosting
 );
 
 // Content.
-// $post_content_clean        = new Post_Content_Clean(); // TODO.
-// $show_editor_on_posts_page = new Show_Editor_On_Posts_Page(); // TODO.
-// $tinymce                   = new TinyMCE(); // TODO.
-// $emoji                     = new Emoji(); // TODO.
-// $post_formats              = new Post_Formats(); // TODO.
-// $controller_content        = new Controller_Content(
-// 	$post_content_clean,
-// 	$show_editor_on_posts_page,
-// 	$tinymce,
-// 	$emoji,
-// 	$post_formats
-// );
+$post_content_clean        = new Post_Content_Clean();
+$show_editor_on_posts_page = new Show_Editor_On_Posts_Page();
+$tinymce                   = new TinyMCE();
+$emoji                     = new Emoji();
+$post_formats              = new Post_Formats();
+$controller_content        = new Controller_Content(
+	$post_content_clean,
+	$show_editor_on_posts_page,
+	$tinymce,
+	$emoji,
+	$post_formats
+);
 
 // Formatting.
-// $body_classes          = new Body_Classes(); // TODO.
-// $frames                = new iFrames(); // TODO.
-// $responsive_embeds     = new Responsive_Embeds(); // TODO.
-// $controller_formatting = new Controller_Formatting(
-// 	$body_classes,
-// 	$frames,
-// 	$responsive_embeds
-// );
+$body_classes          = new Body_Classes();
+$iframes               = new IFrames();
+$responsive_embeds     = new Responsive_Embeds();
+$controller_formatting = new Controller_Formatting(
+	$body_classes,
+	$iframes,
+	$responsive_embeds
+);
 
 // Permalinks.
 // $post_slug             = new Post_Slug(); // TODO.
@@ -234,9 +234,9 @@ $controller_main          = new Controller_Main(
 	$settings,
 	$controller_assets,
 	$notices_admin,
-	$controller_admin//,
-	// $controller_content,
-	// $controller_formatting,
+	$controller_admin,
+	$controller_content,
+	$controller_formatting
 	// $controller_permalinks,
 	// $controller_security,
 	// $controller_seo,
