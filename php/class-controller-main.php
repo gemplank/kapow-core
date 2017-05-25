@@ -120,9 +120,9 @@ class Controller_Main {
 			KAPOW_CORE_ROOT . '\languages'
 		);
 
-		// $this->settings->run();
+		// $this //->settings->run();
 		$this->controller_assets->run();
-		// $this->notices_admin->run();
+		// $this //->notices_admin->run();
 		$this->controller_admin->run();
 		$this->controller_content->run();
 		$this->controller_formatting->run();

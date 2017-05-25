@@ -24,7 +24,7 @@ class Controller_Formatting {
 	private $body_classes;
 
 	/**
-	 * iFrames
+	 * IFrames
 	 *
 	 * @var 	object
 	 * @access	private
