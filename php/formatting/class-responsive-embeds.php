@@ -10,7 +10,7 @@
 namespace kapow\kapow_core;
 
 /**
- *  * Add a responsive wrapper to iframes.
+ * Add a responsive wrapper to iframes.
  */
 class Responsive_Embeds {
 

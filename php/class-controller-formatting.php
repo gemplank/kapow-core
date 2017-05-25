@@ -10,7 +10,7 @@
 namespace kapow\kapow_core;
 
 /**
- * The main loader for this plugin
+ * The main loader for the formatting
  */
 class Controller_Formatting {
 

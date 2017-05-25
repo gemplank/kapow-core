@@ -85,8 +85,8 @@ require_once 'php/formatting/class-iframes.php';
 require_once 'php/formatting/class-responsive-embeds.php';
 
 // Permalinks.
-// require_once 'php/class-controller-permalinks.php'; // TODO.
-// require_once 'php/post/add-blog-to-post-slug.php';
+require_once 'php/class-controller-permalinks.php';
+require_once 'php/post/class-post-slug.php';
 
 // Security.
 // require_once 'php/class-controller-security.php'; // TODO.
@@ -137,8 +137,8 @@ use kapow\kapow_core\IFrames;
 use kapow\kapow_core\Responsive_Embeds;
 
 // Permalinks.
-use kapow\kapow_core\Controller_Permalinks; // TODO.
-use kapow\kapow_core\Post_Slug; // TODO.
+use kapow\kapow_core\Controller_Permalinks;
+use kapow\kapow_core\Post_Slug;
 
 // Security.
 use kapow\kapow_core\Controller_Security; // TODO.
@@ -195,10 +195,10 @@ $controller_formatting = new Controller_Formatting(
 );
 
 // Permalinks.
-// $post_slug             = new Post_Slug(); // TODO.
-// $controller_permalinks = new Controller_Permalinks(
-// 	$post_slug
-// );
+$post_slug             = new Post_Slug();
+$controller_permalinks = new Controller_Permalinks(
+	$post_slug
+);
 
 // Security.
 // $limit_login_attempts    = new Limit_Login_Attempts(); // TODO.
@@ -236,8 +236,8 @@ $controller_main          = new Controller_Main(
 	$notices_admin,
 	$controller_admin,
 	$controller_content,
-	$controller_formatting
-	// $controller_permalinks,
+	$controller_formatting,
+	$controller_permalinks
 	// $controller_security,
 	// $controller_seo,
 	// $controller_users
