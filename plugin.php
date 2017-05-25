@@ -23,24 +23,16 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Exit and display error if minium version of PHP is not met.
+ * Configuration
  *
- * Do this now before we start calling classes and namespaces, as the user may
- * be using a version of PHP that does not support those features.
+ * TODO.
  */
-if ( version_compare( phpversion(), '5.6', '<' ) ) {
-	$php_version_notice = sprintf( __( 'Your web-server is running an un-supported version of PHP. Please upgrade to version %1$s  or higher to avoid potential issues with %2$s and other Wordpress plugins.', 'kapow-core' ), KAPOW_CORE_MIN_PHP_VERSION, KAPOW_CORE_NAME );
-	wp_die( esc_html( $php_version_notice ) );
-}
-
-// Configuration.
-// TODO
 
 /**
  * Constants
  */
 
-// URL based parameters.
+// Set the Top Level Domain (TLD) for use within functions.
 // @codingStandardsIgnoreStart
 $url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 // @codingStandardsIgnoreEnd
@@ -50,9 +42,21 @@ $tld = end( $tld );
 define( 'KAPOW_CORE_ROOT', __FILE__ );
 define( 'KAPOW_CORE_NAME', 'Kapow Core' );
 define( 'KAPOW_CORE_PREFIX', 'kapow_core' );
-define( 'KAPOW_CORE_PERMITTED_USERNAME', 'makedo' );
+define( 'KAPOW_CORE_PERMITTED_USERNAME', 'makedo' ); // TODO: This should be a filter.
 define( 'KAPOW_CORE_TLD', $tld );
 define( 'KAPOW_CORE_IS_LOCKOUT_GLOBAL', false ); // Should the limit login feature lock by username, or globally?
+define( 'KAPOW_CORE_MIN_PHP_VERSION', '5.6' );
+
+/**
+ * Exit and display error if minium version of PHP is not met.
+ *
+ * Do this now before we start calling classes and namespaces, as the user may
+ * be using a version of PHP that does not support those features.
+ */
+if ( version_compare( phpversion(), KAPOW_CORE_MIN_PHP_VERSION, '<' ) ) {
+	$php_version_notice = sprintf( __( 'Your web-server is running an un-supported version of PHP. Please upgrade to version %1$s  or higher to avoid potential issues with %2$s and other Wordpress plugins.', 'kapow-core' ), KAPOW_CORE_MIN_PHP_VERSION, KAPOW_CORE_NAME );
+	wp_die( esc_html( $php_version_notice ) );
+}
 
 /**
  * Security Constants
