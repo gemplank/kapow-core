@@ -17,7 +17,11 @@
  * Domain Path:       /languages
  */
 
-// Abort if this file is called directly.
+/**
+ * Abort on Direct Call
+ *
+ * Abort if this file is called directly.
+ */
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -30,12 +34,15 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Constants
+ *
+ * Sets the Top Level Domain (TLD) for use within constant. Then sets the
+ * constants.
  */
 
-// Set the Top Level Domain (TLD) for use within functions.
 // @codingStandardsIgnoreStart
 $url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 // @codingStandardsIgnoreEnd
+
 $tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
 $tld = end( $tld );
 
@@ -48,6 +55,8 @@ define( 'KAPOW_CORE_IS_LOCKOUT_GLOBAL', false ); // Should the limit login featu
 define( 'KAPOW_CORE_MIN_PHP_VERSION', '5.6' );
 
 /**
+ * PHP Version Check
+ *
  * Exit and display error if minium version of PHP is not met.
  *
  * Do this now before we start calling classes and namespaces, as the user may
@@ -255,5 +264,7 @@ $controller_main          = new Controller_Main(
 	// $controller_users
 );
 
-// Go.
+/**
+ * Run main instance
+ */
 $controller_main->run();
