@@ -22,25 +22,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// URL based parameters.
-$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; // WPCS: ok.
-$tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
-$tld = end( $tld );
-
-// Constants.
-define( 'KAPOW_CORE_ROOT', __FILE__ );
-define( 'KAPOW_CORE_NAME', 'Kapow Core' );
-define( 'KAPOW_CORE_PREFIX', 'kapow_core' );
-define( 'KAPOW_CORE_PERMITTED_USERNAME', 'makedo' );
-define( 'KAPOW_CORE_TLD', $tld );
-define( 'KAPOW_CORE_MIN_PHP_VERSION', '5.6' );
-define( 'KAPOW_CORE_IS_LOCKOUT_GLOBAL', false ); // Should the limit login feature lock by username, or globally?
-
-// Exit and display error if minium version of PHP is not met.
-//
-// Do this now before we start calling classes and namespaces, as the user may
-// be using a version of PHP that does not support those features.
-if ( version_compare( phpversion(), KAPOW_CORE_MIN_PHP_VERSION, '<' ) ) {
+/**
+ * Exit and display error if minium version of PHP is not met.
+ *
+ * Do this now before we start calling classes and namespaces, as the user may
+ * be using a version of PHP that does not support those features.
+ */
+if ( version_compare( phpversion(), '5.6', '<' ) ) {
 	$php_version_notice = sprintf( __( 'Your web-server is running an un-supported version of PHP. Please upgrade to version %1$s  or higher to avoid potential issues with %2$s and other Wordpress plugins.', 'kapow-core' ), KAPOW_CORE_MIN_PHP_VERSION, KAPOW_CORE_NAME );
 	wp_die( esc_html( $php_version_notice ) );
 }
@@ -48,7 +36,27 @@ if ( version_compare( phpversion(), KAPOW_CORE_MIN_PHP_VERSION, '<' ) ) {
 // Configuration.
 // TODO
 
-// Security Constants.
+/**
+ * Constants
+ */
+
+// URL based parameters.
+// @codingStandardsIgnoreStart
+$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+// @codingStandardsIgnoreEnd
+$tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
+$tld = end( $tld );
+
+define( 'KAPOW_CORE_ROOT', __FILE__ );
+define( 'KAPOW_CORE_NAME', 'Kapow Core' );
+define( 'KAPOW_CORE_PREFIX', 'kapow_core' );
+define( 'KAPOW_CORE_PERMITTED_USERNAME', 'makedo' );
+define( 'KAPOW_CORE_TLD', $tld );
+define( 'KAPOW_CORE_IS_LOCKOUT_GLOBAL', false ); // Should the limit login feature lock by username, or globally?
+
+/**
+ * Security Constants
+ */
 require_once 'php/security/const-debug.php';              // Enable Debug when on .dev domain only.
 require_once 'php/security/const-disallow-file-edit.php'; // Disallow file edit.
 require_once 'php/security/const-disallow-file-mods.php'; // Disallow file installs unless on .dev domain.
