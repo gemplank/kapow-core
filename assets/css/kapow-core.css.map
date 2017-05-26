@@ -1,0 +1,15 @@
+{
+	"version": 3,
+	"sourceRoot": "assets/css",
+	"file": "kapow-core.css",
+	"sources": [
+		"../src/sass/kapow-core.scss",
+		"../src/sass/components/_responsive-embeds.scss"
+	],
+	"sourcesContent": [
+		"@charset \"UTF-8\";\n\n/* ==========================================================================\n   PLUGIN SCSS\n   ========================================================================== */\n\n/**\n * CSS for the plugin front end.\n *\n * The CSS here should exist here just for reference. We highly recommend that\n * you delete, this CSS and create your own within your existing theme, and\n * concatinate it within your existing workflow.\n */\n\n// Responsive Embeds.\n@import \"components/responsive-embeds.scss\";\n",
+		"/**\n * Embedded content styles\n *\n * EG: for YouTube, Google Maps, Twitter etc.\n *\n * Enclose embedded content in a <div> with the `responsive-embed` class to make\n * it fully responsive.\n *\n * Loveingly borrowed from the Kapow Framework by Dave Green (https://github.com/davetgreen)\n * https://github.com/mkdo/kapow-theme\n */\n\n.responsive-embed {\n  height: 0;\n  margin: kp-rem(24px) 0;\n  padding-bottom: 56.25%;\n  position: relative;\n  overflow: hidden;\n}\n.responsive-embed > div,\n.responsive-embed > iframe,\n.responsive-embed > object {\n  bottom: 0;\n  height: 100% !important;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  width: 100% !important;\n}\n.responsive-embed > iframe,\n.responsive-embed > object {\n  border: 0;\n}\n"
+	],
+	"mappings": "AAEA;;gFAEgF;AAEhF;;;;;;GAMG;ACZH;;;;;;;;;;GAUG;AAEH,AAAA,iBAAiB,CAAC;EAChB,MAAM,EAAE,CAAE;EACV,MAAM,EAAE,YAAM,CAAO,CAAC;EACtB,cAAc,EAAE,MAAO;EACvB,QAAQ,EAAE,QAAS;EACnB,QAAQ,EAAE,MAAO,GAClB;;AACD,AAAoB,iBAAH,GAAG,GAAG;AACvB,AAAoB,iBAAH,GAAG,MAAM;AAC1B,AAAoB,iBAAH,GAAG,MAAM,CAAC;EACzB,MAAM,EAAE,CAAE;EACV,MAAM,EAAE,eAAgB;EACxB,IAAI,EAAE,CAAE;EACR,QAAQ,EAAE,QAAS;EACnB,KAAK,EAAE,CAAE;EACT,GAAG,EAAE,CAAE;EACP,KAAK,EAAE,eAAgB,GACxB;;AACD,AAAoB,iBAAH,GAAG,MAAM;AAC1B,AAAoB,iBAAH,GAAG,MAAM,CAAC;EACzB,MAAM,EAAE,CAAE,GACX",
+	"names": []
+}

@@ -82,7 +82,7 @@ module.exports = function(grunt) {
 				// Name of your main Sass file and
 				// consequent CSS file.
 				// -------------------------------------
-				sass_file: 'plugin'
+				sass_file: 'kapow-core'
 			},
 
 			// -------------------------------------
@@ -125,7 +125,7 @@ module.exports = function(grunt) {
 			// for PUBLIC enqueues.
 			// -------------------------------------
 			concatPublic: [
-				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/plugin.js'
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/kapow-core.js'
 			],
 
 			// -------------------------------------
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
 			// for ADMIN enqueues.
 			// -------------------------------------
 			concatAdmin: [
-				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/plugin-admin.js'
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/kapow-core-admin.js'
 			],
 
 			// -------------------------------------
@@ -141,7 +141,7 @@ module.exports = function(grunt) {
 			// for CUSTOMIZER enqueues.
 			// -------------------------------------
 			concatCustomizer: [
-				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/customizer.js'
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/kapow-core-customizer.js'
 			],
 
 			// -------------------------------------
