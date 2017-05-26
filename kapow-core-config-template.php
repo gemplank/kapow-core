@@ -115,7 +115,7 @@ add_filter( 'kapow_core_view_template_folder_check_exists', '__return_false' );
  * If true, the global comments setting is set to disabled, the menu item for
  * comments is removed and the comment meta boxes are hidden.
  */
-add_filter( 'kapow_core__disable_comments', '__return_true' );
+add_filter( 'kapow_core_disable_comments', '__return_true' );
 
 /**
  * CONTENT
@@ -161,6 +161,20 @@ add_filter( 'kapow_core_content_tags', function( $allowed_tags ) {
 add_filter( 'kapow_core_content_protocols', function( $allowed_protocols ) {
 	return $allowed_protocols;
 }, 1 );
+
+/**
+ * DASHBOARD WIDGETS
+ */
+
+/**
+ * Remove dashbaord widgets
+ *
+ * If true, the majority of dashbaord widgets will be removed. By all means you
+ * can set this to false and copy the function in
+ * `php/dashboard/class-dashboard-widgets.php` into your project and add/remove
+ * your own widgets.
+ */
+add_filter( 'kapow_core_remove_widgets', '__return_true' );
 
 /**
  * HOSTING
