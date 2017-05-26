@@ -100,7 +100,6 @@ class Post_Content_Clean {
 				} else {
 					update_post_meta( $post_id, $key, $new_meta );
 				}
-
 			} elseif ( ! empty( $meta ) ) {
 
 				// Set the meta item.
@@ -146,7 +145,7 @@ class Post_Content_Clean {
 		$is_serialized = @unserialize( $data ); // WPCS: ok.
 
 		// Unserialize the meta.
-		if ( $is_serialized ) {
+		if ( false !== $is_serialized ) {
 			$data = unserialize( $data ); // WPCS: ok.
 
 			foreach ( $data as &$unserialized_data ) {
