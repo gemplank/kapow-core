@@ -3,7 +3,7 @@
  * Kapow Core Config Template
  *
  * This file is not loaded by this plugin, it should be copied and referenced
- * in your project eiterh wholsale or by individual snippets.
+ * in your project either wholsale or by individual snippets.
  *
  * All hooks and filters are set to their defaults.
  *
