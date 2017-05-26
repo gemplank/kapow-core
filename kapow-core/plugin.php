@@ -18,6 +18,18 @@
  */
 
 /**
+ * Configuration
+ *
+ * At the root of this project, there is a file called
+ * `kapow-core-config-template.php`. All config is done via filters (with
+ * default settings), this file lists all the hooks and filters, and has
+ * snippets that can be pasted into your project to override them.
+ *
+ * This file is not loaded by this plugin, it should be copied and referenced
+ * in your project.
+ */
+
+/**
  * Abort on Direct Call
  *
  * Abort if this file is called directly.
@@ -25,12 +37,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-/**
- * Configuration
- *
- * TODO.
- */
 
 /**
  * Constants
