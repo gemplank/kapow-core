@@ -1,3 +1,13 @@
+/* ==========================================================================
+   PLUGIN SCSS
+   ========================================================================== */
+/**
+ * CSS for the plugin front end.
+ *
+ * The CSS here should exist here just for reference. We highly recommend that
+ * you delete, this CSS and create your own within your existing theme, and
+ * concatinate it within your existing workflow.
+ */
 /**
  * Embedded content styles
  *
@@ -9,14 +19,13 @@
  * Loveingly borrowed from the Kapow Framework by Dave Green (https://github.com/davetgreen)
  * https://github.com/mkdo/kapow-theme
  */
-
 .responsive-embed {
   height: 0;
   margin: kp-rem(24px) 0;
   padding-bottom: 56.25%;
   position: relative;
-  overflow: hidden;
-}
+  overflow: hidden; }
+
 .responsive-embed > div,
 .responsive-embed > iframe,
 .responsive-embed > object {
@@ -26,9 +35,10 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 100% !important;
-}
+  width: 100% !important; }
+
 .responsive-embed > iframe,
 .responsive-embed > object {
-  border: 0;
-}
+  border: 0; }
+
+/*# sourceMappingURL=kapow-core.css.map */

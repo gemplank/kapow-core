@@ -16,9 +16,9 @@ module.exports = {
 		src: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.css_dir %>/<%= siteInfo.sass_file %>.css',
 	},
 	plugin_admin: {
-		src: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.css_dir %>/plugin-admin.css',
+		src: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.css_dir %>/kapow-core-admin.css',
 	},
 	plugin_admin_editor: {
-		src: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.css_dir %>/plugin-admin-editor.css',
+		src: '<%= siteInfo.assets_path_raw %>/<%= siteInfo.css_dir %>/kapow-core-admin-editor.css',
 	}
 }

@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"sourceRoot": "assets/css",
+	"file": "kapow-core-admin-editor.css",
+	"sources": [
+		"../src/sass/kapow-core-admin-editor.scss"
+	],
+	"sourcesContent": [
+		""
+	],
+	"mappings": "",
+	"names": []
+}
