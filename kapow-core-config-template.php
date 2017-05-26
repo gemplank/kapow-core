@@ -177,6 +177,17 @@ add_filter( 'kapow_core_content_protocols', function( $allowed_protocols ) {
 add_filter( 'kapow_core_remove_widgets', '__return_true' );
 
 /**
+ * EDITOR
+ */
+
+/**
+ * Show editor on posts page
+ *
+ * If true, the editor will be shown on the posts page.
+ */
+add_filter( 'kapow_core_show_editor_on_posts_page', '__return_true' );
+
+/**
  * HOSTING
  */
 
