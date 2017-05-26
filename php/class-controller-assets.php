@@ -80,7 +80,7 @@ class Controller_Assets {
 			$plugin_css_url  = plugins_url( 'assets/css/plugin' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
 			$plugin_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/plugin' . $this->asset_suffix . '.css';
 			wp_enqueue_style(
-				KAPOW_CORE_PREFIX . '-plugin-css',
+				KAPOW_CORE_PREFIX . '-css',
 				$plugin_css_url,
 				array(),
 				filemtime( $plugin_css_path )
@@ -92,7 +92,7 @@ class Controller_Assets {
 			$plugin_js_url   = plugins_url( 'assets/js/plugin' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
 			$plugin_js_path  = dirname( KAPOW_CORE_ROOT ) . '/assets/js/plugin' . $this->asset_suffix . '.js';
 			wp_enqueue_script(
-				KAPOW_CORE_PREFIX . '-plugin-js',
+				KAPOW_CORE_PREFIX . '-js',
 				$plugin_js_url,
 				array( 'jquery' ),
 				filemtime( $plugin_js_path ),
@@ -118,7 +118,7 @@ class Controller_Assets {
 			$plugin_css_url  = plugins_url( 'assets/css/plugin-admin' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
 			$plugin_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/plugin-admin' . $this->asset_suffix . '.css';
 			wp_enqueue_style(
-				KAPOW_CORE_PREFIX . '-plugin-admin-css',
+				KAPOW_CORE_PREFIX . '-admin-css',
 				$plugin_css_url,
 				array(),
 				filemtime( $plugin_css_path )
@@ -137,7 +137,7 @@ class Controller_Assets {
 			$plugin_js_url   = plugins_url( 'assets/js/plugin-admin' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
 			$plugin_js_path  = dirname( KAPOW_CORE_ROOT ) . '/assets/js/plugin-admin' . $this->asset_suffix . '.js';
 			wp_enqueue_script(
-				KAPOW_CORE_PREFIX . '-plugin-admin-js',
+				KAPOW_CORE_PREFIX . '-admin-js',
 				$plugin_js_url,
 				array( 'jquery' ),
 				filemtime( $plugin_js_path ),
