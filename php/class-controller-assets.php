@@ -71,8 +71,8 @@ class Controller_Assets {
 	 */
 	public function public_enqueue_scripts() {
 
-		$do_public_enqueue     = apply_filters( KAPOW_CORE_PREFIX . '_do_public_enqueue', false );
-		$do_public_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_public_css_enqueue', false );
+		$do_public_enqueue     = apply_filters( KAPOW_CORE_PREFIX . '_do_public_enqueue', true );
+		$do_public_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_public_css_enqueue', true );
 		$do_public_js_enqueue  = apply_filters( KAPOW_CORE_PREFIX . '_do_public_js_enqueue', false );
 
 		/* CSS */
@@ -159,7 +159,7 @@ class Controller_Assets {
 			$customizer_js_url  = plugins_url( 'assets/js/kapow-core-customizer' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
 			$customizer_js_path = dirname( KAPOW_CORE_ROOT ) . '/assets/js/kapow-core-customizer.js';
 			wp_enqueue_script(
-				KAPOW_CORE_PREFIX . '-customizer',
+				KAPOW_CORE_PREFIX . '-customizer-js',
 				$customizer_js_url,
 				array( 'customize-preview' ),
 				filemtime( $customizer_js_path ),
