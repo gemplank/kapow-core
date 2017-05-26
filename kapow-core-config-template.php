@@ -13,7 +13,7 @@
  */
 
 /**
- * Assets
+ * ASSETS
  *
  * We highly recommend that the appropriate filters are used to deactivate all
  * enqueues, and these are concatenated and enqueued within your own workflow.
@@ -70,7 +70,7 @@ add_filter( 'kapow_core_do_customizer_enqueue', '__return_false' );
 
 
 /**
- * Views
+ * VIEWS
  *
  * There are no views currently in the theme, however:
  *
@@ -89,6 +89,8 @@ add_filter( 'kapow_core_do_customizer_enqueue', '__return_false' );
  * add the following code:
  *
  * `return get_stylesheet_directory() . '/template-parts/kapow-core/';`
+ *
+ * @param string  $view_template_folder  The path to the folder.
  */
 add_filter( 'kapow_core_view_template_folder', function( $view_template_folder ) {
 	return $view_template_folder;
@@ -102,3 +104,84 @@ add_filter( 'kapow_core_view_template_folder', function( $view_template_folder )
  * view.
  */
 add_filter( 'kapow_core_view_template_folder_check_exists', '__return_false' );
+
+/**
+ * COMMENTS
+ */
+
+/**
+ * Disable Comments
+ *
+ * If true, the global comments setting is set to disabled, the menu item for
+ * comments is removed and the comment meta boxes are hidden.
+ */
+add_filter( 'kapow_core__disable_comments', '__return_true' );
+
+/**
+ * CONTENT
+ */
+
+/**
+ * Content Tags
+ *
+ * The only tags that are allowed within our editor and excerpt (and meta for
+ * that matter when hooked in correctly).
+ *
+ * Example:
+ *
+ * To add in additonal tags, just add them in manually.
+ *
+ * `$allowed_tags['i'] = array(
+ *     'id'    => array(),
+ *     'class' => array(),
+ * );`
+ * `return $allowed_tags;`
+ *
+ * @param array  $allowed_tags  Array of allowed tags.
+ */
+add_filter( 'kapow_core_content_tags', function( $allowed_tags ) {
+	return $allowed_tags;
+}, 1 );
+
+/**
+ * Content Protocols
+ *
+ * The only protcols that are allowed within our editor and excerpt (and meta for
+ * that matter when hooked in correctly).
+ *
+ * Example:
+ *
+ * To add in additonal tags, just add them in manually.
+ *
+ * `$allowed_protocols[] = 'skype';``
+ * `return $allowed_protocols;`
+ *
+ * @param array  $allowed_protocols  Array of allowed protocols.
+ */
+add_filter( 'kapow_core_content_protocols', function( $allowed_protocols ) {
+	return $allowed_protocols;
+}, 1 );
+
+/**
+ * HOSTING
+ */
+
+/**
+ * Hosting Menu Permitted User Names
+ *
+ * The usernames that are allowed to see the WPEngine hosting menus.
+ *
+ * Example:
+ *
+ * To add in additonal user names, you could write code to get all the
+ * administrators, or at its simplest level manually add additonal items to the
+ * array.
+ *
+ * `$user_names[] = 'mattwatson';`
+ * `return $user_names;`
+ *
+ * @param array  $user_names  Array of permitted user names.
+ */
+add_filter( 'kapow_core_hosting_menu_permitted_user_names', function( $user_names ) {
+	return $user_names;
+}, 1 );

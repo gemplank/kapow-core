@@ -35,7 +35,7 @@ class Hosting {
 		if ( is_admin() ) {
 			global $menu, $submenu;
 
-			if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) {
+			if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // WPCS: input var okay.
 				remove_menu_page( 'wpengine-common' );
 			} else {
 
@@ -61,8 +61,11 @@ class Hosting {
 					}
 				}
 
+				// Get permitted user names.
+				$user_names = apply_filters( KAPOW_CORE_PREFIX . '_hosting_menu_permitted_user_names', array( 'makedo' ) );
+
 				// Remove Sub Pages.
-				if ( KAPOW_CORE_PERMITTED_USERNAME !== $user_name ) {
+				if ( ! in_array( $user_name, (array) $user_names, true ) ) {
 					remove_submenu_page( 'wpengine-common', 'wpe-user-portal' );
 					remove_submenu_page( 'wpengine-common', 'wpe-support-portal' );
 				}
