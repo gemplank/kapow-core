@@ -125,6 +125,7 @@ module.exports = function(grunt) {
 			// for PUBLIC enqueues.
 			// -------------------------------------
 			concatPublic: [
+				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/components/_clickjack-protection.js',
 				'<%= siteInfo.assets_path_raw %>/<%= siteInfo.js_dir %>/kapow-core.js'
 			],
 
