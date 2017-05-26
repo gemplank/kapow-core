@@ -108,10 +108,10 @@ class Controller_Assets {
 	 */
 	public function admin_enqueue_scripts() {
 
-		$do_admin_enqueue            = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_enqueue', true );
+		$do_admin_enqueue            = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_enqueue', false );
 		$do_admin_css_enqueue        = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_css_enqueue', false );
 		$do_admin_editor_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_editor_css_enqueue', false );
-		$do_admin_js_enqueue         = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_js_enqueue', true );
+		$do_admin_js_enqueue         = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_js_enqueue', false );
 
 		/* CSS */
 		if ( $do_admin_enqueue && $do_admin_css_enqueue ) {
