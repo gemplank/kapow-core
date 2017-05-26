@@ -1,9 +1,9 @@
 {
 	"version": 3,
 	"sourceRoot": "assets/css",
-	"file": "plugin-admin-editor.css",
+	"file": "kapow-core-admin-editor.css",
 	"sources": [
-		"../src/sass/plugin-admin-editor.scss"
+		"../src/sass/kapow-core-admin-editor.scss"
 	],
 	"sourcesContent": [
 		""

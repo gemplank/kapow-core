@@ -71,14 +71,14 @@ class Controller_Assets {
 	 */
 	public function public_enqueue_scripts() {
 
-		$do_public_enqueue     = apply_filters( KAPOW_CORE_PREFIX . '_do_public_enqueue', false );
-		$do_public_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_public_css_enqueue', false );
+		$do_public_enqueue     = apply_filters( KAPOW_CORE_PREFIX . '_do_public_enqueue', true );
+		$do_public_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_public_css_enqueue', true );
 		$do_public_js_enqueue  = apply_filters( KAPOW_CORE_PREFIX . '_do_public_js_enqueue', false );
 
 		/* CSS */
 		if ( $do_public_enqueue && $do_public_css_enqueue ) {
-			$plugin_css_url  = plugins_url( 'assets/css/plugin' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
-			$plugin_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/plugin' . $this->asset_suffix . '.css';
+			$plugin_css_url  = plugins_url( 'assets/css/kapow-core' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
+			$plugin_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/kapow-core' . $this->asset_suffix . '.css';
 			wp_enqueue_style(
 				KAPOW_CORE_PREFIX . '-css',
 				$plugin_css_url,
@@ -89,8 +89,8 @@ class Controller_Assets {
 
 		/* JS */
 		if ( $do_public_enqueue && $do_public_js_enqueue ) {
-			$plugin_js_url   = plugins_url( 'assets/js/plugin' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
-			$plugin_js_path  = dirname( KAPOW_CORE_ROOT ) . '/assets/js/plugin' . $this->asset_suffix . '.js';
+			$plugin_js_url   = plugins_url( 'assets/js/kapow-core' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
+			$plugin_js_path  = dirname( KAPOW_CORE_ROOT ) . '/assets/js/kapow-core' . $this->asset_suffix . '.js';
 			wp_enqueue_script(
 				KAPOW_CORE_PREFIX . '-js',
 				$plugin_js_url,
@@ -108,15 +108,15 @@ class Controller_Assets {
 	 */
 	public function admin_enqueue_scripts() {
 
-		$do_admin_enqueue            = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_enqueue', false );
+		$do_admin_enqueue            = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_enqueue', true );
 		$do_admin_css_enqueue        = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_css_enqueue', false );
 		$do_admin_editor_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_editor_css_enqueue', false );
-		$do_admin_js_enqueue         = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_js_enqueue', false );
+		$do_admin_js_enqueue         = apply_filters( KAPOW_CORE_PREFIX . '_do_admin_js_enqueue', true );
 
 		/* CSS */
 		if ( $do_admin_enqueue && $do_admin_css_enqueue ) {
-			$plugin_css_url  = plugins_url( 'assets/css/plugin-admin' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
-			$plugin_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/plugin-admin' . $this->asset_suffix . '.css';
+			$plugin_css_url  = plugins_url( 'assets/css/kapow-core-admin' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
+			$plugin_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/kapow-core-admin' . $this->asset_suffix . '.css';
 			wp_enqueue_style(
 				KAPOW_CORE_PREFIX . '-admin-css',
 				$plugin_css_url,
@@ -127,15 +127,15 @@ class Controller_Assets {
 
 		/* Editor CSS */
 		if ( $do_admin_enqueue && $do_admin_editor_css_enqueue ) {
-			$editor_css_url  = plugins_url( 'assets/css/plugin-admin-editor' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
-			$editor_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/plugin-admin-editor' . $this->asset_suffix . '.css';
+			$editor_css_url  = plugins_url( 'assets/css/kapow-core-admin-editor' . $this->asset_suffix . '.css', KAPOW_CORE_ROOT );
+			$editor_css_path = dirname( KAPOW_CORE_ROOT ) . '/assets/css/kapow-core-admin-editor' . $this->asset_suffix . '.css';
 			add_editor_style( $editor_css_url . '?v=' . filemtime( $editor_css_path ) );
 		}
 
 		/* JS */
 		if ( $do_admin_enqueue && $do_admin_js_enqueue ) {
-			$plugin_js_url   = plugins_url( 'assets/js/plugin-admin' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
-			$plugin_js_path  = dirname( KAPOW_CORE_ROOT ) . '/assets/js/plugin-admin' . $this->asset_suffix . '.js';
+			$plugin_js_url   = plugins_url( 'assets/js/kapow-core-admin' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
+			$plugin_js_path  = dirname( KAPOW_CORE_ROOT ) . '/assets/js/kapow-core-admin' . $this->asset_suffix . '.js';
 			wp_enqueue_script(
 				KAPOW_CORE_PREFIX . '-admin-js',
 				$plugin_js_url,
@@ -156,10 +156,10 @@ class Controller_Assets {
 		$do_customizer_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_customizer_enqueue', false );
 
 		if ( $do_customizer_enqueue ) {
-			$customizer_js_url  = plugins_url( 'assets/js/customizer' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
-			$customizer_js_path = dirname( KAPOW_CORE_ROOT ) . '/assets/js/customizer.js';
+			$customizer_js_url  = plugins_url( 'assets/js/kapow-core-customizer' . $this->asset_suffix . '.js', KAPOW_CORE_ROOT );
+			$customizer_js_path = dirname( KAPOW_CORE_ROOT ) . '/assets/js/kapow-core-customizer.js';
 			wp_enqueue_script(
-				KAPOW_CORE_PREFIX . '-customizer',
+				KAPOW_CORE_PREFIX . '-customizer-js',
 				$customizer_js_url,
 				array( 'customize-preview' ),
 				filemtime( $customizer_js_path ),

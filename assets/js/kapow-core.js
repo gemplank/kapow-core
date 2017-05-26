@@ -6,3 +6,11 @@ try { top.document.domain } catch (e) {
 	var f = function() { document.body.innerHTML = ''; }; setInterval(f, 1);
 	if (document.body) document.body.onload = f;
 }
+
+
+( function( $ ) {
+	'use strict';
+
+	// Javascript.
+
+} )( jQuery );

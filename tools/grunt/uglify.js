@@ -18,21 +18,21 @@ module.exports = {
 	// -------------------------------------
 	public: {
 		files: {
-			'<%= siteInfo.assets_path %>/<%= pluginInfo.js_dir %>/plugin.min.js': [ '<%= concat.public.dest %>' ]
+			'<%= siteInfo.assets_path %>/<%= pluginInfo.js_dir %>/kapow-core.min.js': [ '<%= concat.public.dest %>' ]
 		}
 	},
 	// Admin JS.
 	// -------------------------------------
 	admin: {
 		files: {
-			'<%= siteInfo.assets_path %>/<%= pluginInfo.js_dir %>/plugin-admin.min.js': [ '<%= concat.admin.dest %>' ]
+			'<%= siteInfo.assets_path %>/<%= pluginInfo.js_dir %>/kapow-core-admin.min.js': [ '<%= concat.admin.dest %>' ]
 		}
 	},
 	// Customizer JS.
  	// -------------------------------------
 	customizer: {
 		files: {
-			'<%= siteInfo.assets_path %>/<%= pluginInfo.js_dir %>/customizer.min.js': [ '<%= concat.customizer.dest %>' ]
+			'<%= siteInfo.assets_path %>/<%= pluginInfo.js_dir %>/kapow-core-customizer.min.js': [ '<%= concat.customizer.dest %>' ]
 		}
 	},
 
