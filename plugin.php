@@ -69,6 +69,9 @@ if ( version_compare( phpversion(), KAPOW_CORE_MIN_PHP_VERSION, '<' ) ) {
 
 /**
  * Security Constants
+ *
+ * WordPress lets people do things that they should never do in a controlled
+ * environment. Lets fix that.
  */
 require_once 'php/security/const-debug.php';              // Enable Debug when on .dev domain only.
 require_once 'php/security/const-disallow-file-edit.php'; // Disallow file edit.
@@ -115,15 +118,15 @@ require_once 'php/security/class-limit-login-attempts.php';
 require_once 'php/security/class-login-one-user-instance.php';
 
 // SEO.
-// require_once 'php/class-controller-seo.php'; // TODO.
-// require_once 'php/seo/wpml-bing-compatible-header.php';
-// require_once 'php/seo/wpml-set-content-language.php';
-// require_once 'php/seo/yoast-wpml-alternate-links-to-site-map.php';
-// require_once 'php/seo/yoast-wpml-sitemap-per-translation.php';
+require_once 'php/class-controller-seo.php';
+require_once 'php/seo/class-bing-header.php';
+require_once 'php/seo/class-content-language.php';
+require_once 'php/seo/class-site-map-links.php';
+require_once 'php/seo/class-site-map-per-language.php';
 
 // Users.
-// require_once 'php/class-controller-users.php'; // TODO.
-// require_once 'php/user/disable-admin-bar.php';
+require_once 'php/class-controller-users.php';
+require_once 'php/user/class-admin-bar.php';
 
 
 /**
@@ -167,15 +170,15 @@ use kapow\kapow_core\Limit_Login_Attempts;
 use kapow\kapow_core\Login_One_User_Instance;
 
 // SEO.
-use kapow\kapow_core\Controller_SEO; // TODO.
-use kapow\kapow_core\Bing_Header; // TODO.
-use kapow\kapow_core\Content_Langauge; // TODO.
-use kapow\kapow_core\Site_Map_Links; // TODO.
-use kapow\kapow_core\Site_Map_Per_Langauge; // TODO.
+use kapow\kapow_core\Controller_SEO;
+use kapow\kapow_core\Bing_Header;
+use kapow\kapow_core\Content_Language;
+use kapow\kapow_core\Site_Map_Links;
+use kapow\kapow_core\Site_Map_Per_Language;
 
 // Users.
-use kapow\kapow_core\Controller_Users; // TODO.
-use kapow\kapow_core\Disable_Admin_Bar; // TODO.
+use kapow\kapow_core\Controller_Users;
+use kapow\kapow_core\Admin_Bar;
 
 /**
  * Instances
@@ -230,22 +233,22 @@ $controller_security     = new Controller_Security(
 );
 
 // SEO.
-// $bing_header           = new Bing_Header(); // TODO.
-// $content_language      = new Content_Langauge(); // TODO.
-// $site_map_links        = new Site_Map_Links(); // TODO.
-// $site_map_per_langauge = new Site_Map_Per_Langauge(); // TODO.
-// $controller_seo        = new Controller_SEO(
-// 	$bing_header,
-// 	$content_language,
-// 	$site_map_links,
-// 	$site_map_per_langauge
-// );
+$bing_header           = new Bing_Header();
+$content_language      = new Content_Language();
+$site_map_links        = new Site_Map_Links();
+$site_map_per_language = new Site_Map_Per_Language();
+$controller_seo        = new Controller_SEO(
+	$bing_header,
+	$content_language,
+	$site_map_links,
+	$site_map_per_language
+);
 
 // Users.
-// $disable_admin_bar = new Disable_Admin_Bar(); // TODO.
-// $controller_users  = new Controller_Users(
-// 	$disable_admin_bar
-// );
+$admin_bar         = new Admin_Bar();
+$controller_users  = new Controller_Users(
+	$admin_bar
+);
 
 // The main plugin.
 $settings                 = new Settings();
@@ -259,9 +262,9 @@ $controller_main          = new Controller_Main(
 	$controller_content,
 	$controller_formatting,
 	$controller_permalinks,
-	$controller_security
-	// $controller_seo,
-	// $controller_users
+	$controller_security,
+	$controller_seo,
+	$controller_users
 );
 
 /**

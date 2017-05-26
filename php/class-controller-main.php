@@ -87,6 +87,15 @@ class Controller_Main {
 	private $controller_security;
 
 	/**
+	 * Control SEO.
+	 *
+	 * @var 	object
+	 * @access	private
+	 * @since	0.1.0
+	 */
+	private $controller_seo;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param Settings              $settings              Define the settings page.
@@ -97,6 +106,7 @@ class Controller_Main {
 	 * @param Controller_Formatting $controller_formatting Control Formatting.
 	 * @param Controller_Permalinks $controller_permalinks Control Permalinks.
 	 * @param Controller_Security   $controller_security   Control Security.
+	 * @param Controller_SEO        $controller_seo        Control SEO.
 	 *
 	 * @since 0.1.0
 	 */
@@ -108,7 +118,8 @@ class Controller_Main {
 		Controller_Content $controller_content,
 		Controller_Formatting $controller_formatting,
 		Controller_Permalinks $controller_permalinks,
-		Controller_Security $controller_security
+		Controller_Security $controller_security,
+		Controller_SEO $controller_seo
 	) {
 		$this->settings              = $settings;
 		$this->controller_assets     = $controller_assets;
@@ -117,7 +128,8 @@ class Controller_Main {
 		$this->controller_content    = $controller_content;
 		$this->controller_formatting = $controller_formatting;
 		$this->controller_permalinks = $controller_permalinks;
-		$this->controller_security  = $controller_security;
+		$this->controller_security   = $controller_security;
+		$this->controller_seo        = $controller_seo;
 	}
 
 	/**
@@ -140,5 +152,6 @@ class Controller_Main {
 		$this->controller_formatting->run();
 		$this->controller_permalinks->run();
 		$this->controller_security->run();
+		$this->controller_seo->run();
 	}
 }
