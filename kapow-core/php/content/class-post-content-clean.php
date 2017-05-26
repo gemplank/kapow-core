@@ -62,7 +62,9 @@ class Post_Content_Clean {
 		foreach ( (array) $post_meta as $key => $meta ) {
 
 			// If the meta is an array, but not serialised.
-			if ( is_array( $meta ) && false === @unserialize( $meta ) ) { // WPCS: ok.
+			// @codingStandardsIgnoreStart
+			if ( is_array( $meta ) && false === @unserialize( $meta ) ) {
+			// @codingStandardsIgnoreEnd
 
 				// Setup a return array.
 				$new_meta = array();
@@ -72,7 +74,9 @@ class Post_Content_Clean {
 					if ( ! empty( $meta_item ) ) {
 
 						// Check if meta is serialised.
-						$is_serialized = @unserialize( $meta_item ); // WPCS: ok.
+						// @codingStandardsIgnoreStart
+						$is_serialized = @unserialize( $meta_item );
+						// @codingStandardsIgnoreEnd
 
 						// Unserialize the meta.
 						if ( false !== $is_serialized ) {
@@ -106,7 +110,9 @@ class Post_Content_Clean {
 				$meta_item = $meta;
 
 				// Check if meta is serialised.
-				$is_serialized = @unserialize( $meta_item ); // WPCS: ok.
+				// @codingStandardsIgnoreStart
+				$is_serialized = @unserialize( $meta_item );
+				// @codingStandardsIgnoreEnd
 
 				// Unserialize the meta.
 				if ( false !== $is_serialized ) {
@@ -142,11 +148,15 @@ class Post_Content_Clean {
 	 */
 	public function kapow_core_sanitize_serialised_data( $data ) {
 
-		$is_serialized = @unserialize( $data ); // WPCS: ok.
+		// @codingStandardsIgnoreStart
+		$is_serialized = @unserialize( $data );
+		// @codingStandardsIgnoreEnd
 
 		// Unserialize the meta.
 		if ( false !== $is_serialized ) {
-			$data = unserialize( $data ); // WPCS: ok.
+			// @codingStandardsIgnoreStart
+			$data = unserialize( $data );
+			// @codingStandardsIgnoreEnd
 
 			foreach ( $data as &$unserialized_data ) {
 
