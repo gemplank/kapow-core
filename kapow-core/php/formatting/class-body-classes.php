@@ -20,6 +20,13 @@ class Body_Classes {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_add_body_classes', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'body_class', array( $this, 'kapow_core_body_classes' ) );
 	}
 

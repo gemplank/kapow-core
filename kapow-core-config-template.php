@@ -122,6 +122,14 @@ add_filter( 'kapow_core_disable_comments', '__return_true' );
  */
 
 /**
+ * Clean Content
+ *
+ * If true, content (excpert, meta and body text) will be 'cleaned' (only
+ * certain tags will be allowed).
+ */
+add_filter( 'kapow_core_clean_content', '__return_true' );
+
+/**
  * Content Tags
  *
  * The only tags that are allowed within our editor and excerpt (and meta for
@@ -187,9 +195,61 @@ add_filter( 'kapow_core_remove_widgets', '__return_true' );
  */
 add_filter( 'kapow_core_show_editor_on_posts_page', '__return_true' );
 
+
+/**
+ * Remove TinyMCE Styles
+ *
+ * If true, the style selector, and the ability to add H1 text will be removed
+ * from TinyMCE.
+ */
+add_filter( 'kapow_core_remove_tiny_mce_styles', '__return_true' );
+
+/**
+ * EMOJI
+ */
+
+/**
+ * Remove Emoji
+ *
+ * If true, emoji will be disabled within WordPress.
+ */
+add_filter( 'kapow_core_remove_emoji', '__return_true' );
+
+/**
+ * FORMATTING
+ */
+
+/**
+ * Add body classes
+ *
+ * If true, additional body classes will be added to pages.
+ */
+add_filter( 'kapow_core_add_body_classes', '__return_true' );
+
+/**
+ * Add iframe WCAG wrapper
+ *
+ * If true, WCAG compliant wrappers will be added to iFrames.
+ */
+add_filter( 'kapow_core_iframe_wcag_wrapper', '__return_true' );
+
+/**
+ * Add responsive embed wrappers
+ *
+ * If true, responsive wrappers will be added to embed components.
+ */
+add_filter( 'kapow_core_responsive_embed_wrapper', '__return_true' );
+
 /**
  * HOSTING
  */
+
+/**
+ * Alter Hosting Menus
+ *
+ * If true, hosting menus will be altered to hide options from clients.
+ */
+add_filter( 'kapow_core_alter_hosting_menus', '__return_true' );
 
 /**
  * Hosting Menu Permitted User Names

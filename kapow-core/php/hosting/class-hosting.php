@@ -20,6 +20,13 @@ class Hosting {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_alter_hosting_menus', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_action( 'admin_menu', array( $this, 'kapow_core_change_wp_engine_name' ), 9999 );
 		add_filter( 'pre_option_blog_public', array( $this, 'kapow_core_override_robots_txt_save' ) );
 	}
@@ -82,7 +89,7 @@ class Hosting {
 
 		$allow_robots = '1';
 
-		if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) {
+		if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // WPCS: input var okay.
 			$allow_robots = '0';
 		}
 

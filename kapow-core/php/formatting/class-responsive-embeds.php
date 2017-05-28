@@ -20,6 +20,13 @@ class Responsive_Embeds {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_responsive_embed_wrapper', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'the_content', array( $this, 'kapow_core_embed_wrapper' ) );
 	}
 

@@ -21,6 +21,13 @@ class Post_Content_Clean {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_clean_content', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'wp_insert_post_data', array( $this, 'kapow_core_sanitize_post_content' ), 99, 2 );
 		add_action( 'wp_insert_post', array( $this, 'kapow_core_sanitize_post_meta' ) );
 		add_filter( 'the_content', array( $this, 'kapow_core_remove_empty_p' ), 20, 1 );
