@@ -24,6 +24,13 @@ class Show_Editor_On_Posts_Page {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_show_editor_on_posts_page', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_action( 'edit_form_after_title', array( $this, 'kapow_core_show_editor_on_posts_page' ), 0 );
 	}
 

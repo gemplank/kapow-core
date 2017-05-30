@@ -66,6 +66,13 @@ class Limit_Login_Attempts {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_limit_login_attempts', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'authenticate', array( $this, 'check_attempted_login' ), 30, 3 );
 		add_action( 'wp_login_failed', array( $this, 'login_failed' ), 10, 1 );
 	}

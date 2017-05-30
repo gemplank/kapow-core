@@ -22,6 +22,13 @@ class Post_Formats {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_remove_post_formats', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_action( 'after_setup_theme', array( $this, 'kapow_core_remove_post_formats' ), 100 );
 	}
 

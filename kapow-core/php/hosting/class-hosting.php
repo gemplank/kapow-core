@@ -20,6 +20,13 @@ class Hosting {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_alter_hosting_menus', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_action( 'admin_menu', array( $this, 'kapow_core_change_wp_engine_name' ), 9999 );
 		add_filter( 'pre_option_blog_public', array( $this, 'kapow_core_override_robots_txt_save' ) );
 	}
@@ -35,7 +42,8 @@ class Hosting {
 		if ( is_admin() ) {
 			global $menu, $submenu;
 
-			if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) {
+			// @codingStandardsIgnoreStart
+			if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // @codingStandardsIgnoreEnd
 				remove_menu_page( 'wpengine-common' );
 			} else {
 
@@ -61,8 +69,11 @@ class Hosting {
 					}
 				}
 
+				// Get permitted user names.
+				$user_names = apply_filters( KAPOW_CORE_PREFIX . '_hosting_menu_permitted_user_names', array( 'makedo' ) );
+
 				// Remove Sub Pages.
-				if ( KAPOW_CORE_PERMITTED_USERNAME !== $user_name ) {
+				if ( ! in_array( $user_name, (array) $user_names, true ) ) {
 					remove_submenu_page( 'wpengine-common', 'wpe-user-portal' );
 					remove_submenu_page( 'wpengine-common', 'wpe-support-portal' );
 				}
@@ -79,7 +90,8 @@ class Hosting {
 
 		$allow_robots = '1';
 
-		if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) {
+		// @codingStandardsIgnoreStart
+		if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // @codingStandardsIgnoreEnd
 			$allow_robots = '0';
 		}
 

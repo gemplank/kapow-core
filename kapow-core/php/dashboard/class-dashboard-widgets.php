@@ -21,6 +21,13 @@ class Dashboard_Widgets {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_remove_widgets', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_action( 'wp_dashboard_setup', array( $this, 'kapow_core_remove_dashboard_widgets' ), 99 );
 	}
 
@@ -36,12 +43,18 @@ class Dashboard_Widgets {
 		// Normal Widgets.
 		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
 		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links'] );
-		// unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
 		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'] );
 		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_drafts'] );
 		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments'] );
 		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
 		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
+
+		/**
+		 * Additional
+		 *
+		 * We could also unset the 'right now' panel.
+		 * `unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );`
+		 */
 
 		// WP Engine Widgets.
 		unset( $wp_meta_boxes['dashboard']['normal']['core']['wpe_dify_news_feed'] );

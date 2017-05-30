@@ -1,6 +1,6 @@
 <?php
 /**
- * iFrames
+ * IFrames
  *
  * @since	0.1.0
  *
@@ -20,6 +20,13 @@ class IFrames {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_iframe_wcag_wrapper', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'the_content', array( $this, 'kapow_core_iframe_wcag_compliance' ), 20 );
 	}
 

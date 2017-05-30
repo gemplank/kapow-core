@@ -21,6 +21,13 @@ class Post_Content_Clean {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_clean_content', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'wp_insert_post_data', array( $this, 'kapow_core_sanitize_post_content' ), 99, 2 );
 		add_action( 'wp_insert_post', array( $this, 'kapow_core_sanitize_post_meta' ) );
 		add_filter( 'the_content', array( $this, 'kapow_core_remove_empty_p' ), 20, 1 );
@@ -53,53 +60,131 @@ class Post_Content_Clean {
 	public function kapow_core_sanitize_post_meta( $post_id ) {
 
 		// Remove this hook, otherwise we will cause an infinate loop.
-		remove_action( 'wp_insert_post', 'kapow_core_sanitize_post_meta' );
+		remove_action( 'wp_insert_post', array( $this, 'kapow_core_sanitize_post_meta' ) );
 
-		/**
-		 * Example 1: Clean Meta
-		 *
-		 * To clean meta we need to get it, clean it and save it again.
-		 *
-		 * // Get the post meta.
-	 	 * $meta_example = get_post_meta( $post_id, 'meta_key', true );
-	 	 *
-	 	 * // Sanitize the items HTML key.
-	 	 * $meta_example = $this->kapow_core_sanitize_html( $meta_example );
-	 	 *
-	 	 * // Save the meta.
-	 	 * update_post_meta( $post_id, 'meta_key', $meta_example );
-	 	 *
-	 	 * END - Example 1.
-		 */
+		// Get all the post meta.
+		$post_meta = get_post_meta( $post_id );
 
-		/**
-		 * Example 2: Clean Array of Meta
-		 *
-		 * Sometmes meta is stored as an array, we will need to get the array
-		 * and loop through the key that contains the HTML content.
-		 *
-		 * // Get the post meta (this should be an array).
-	 	 * $meta_array_example = get_post_meta( $post_id, 'meta_array_key', true );
-	 	 *
-	 	 * // Make sure this is an array.
-	 	 * if ( ! is_array( $meta_array_example ) ) {
-	 	 *     $meta_array_example = array();
-	 	 * }
-	 	 *
-	 	 * // Loop through the array, and sanitize it.
-	 	 * foreach ( $meta_array_example as &$item ) {
-	 	 *    // Sanitize the items HTML key.
-	 	 *    $item['content'] = $this->kapow_core_sanitize_html( $item['content'] );
-	 	 * }
-	 	 *
-	 	 * // After the clean update the post meta.
-	 	 * update_post_meta( $post_id, 'meta_array_key', $meta_array_example );
-	 	 *
-	 	 * END - Example 2.
-		 */
+		// Loop through the post meta.
+		foreach ( (array) $post_meta as $key => $meta ) {
+
+			// If the meta is an array, but not serialised.
+			// @codingStandardsIgnoreStart
+			if ( is_array( $meta ) && false === @unserialize( $meta ) ) {
+			// @codingStandardsIgnoreEnd
+
+				// Setup a return array.
+				$new_meta = array();
+
+				foreach ( $meta as $meta_key => $meta_item ) {
+
+					if ( ! empty( $meta_item ) ) {
+
+						// Check if meta is serialised.
+						// @codingStandardsIgnoreStart
+						$is_serialized = @unserialize( $meta_item );
+						// @codingStandardsIgnoreEnd
+
+						// Unserialize the meta.
+						if ( false !== $is_serialized ) {
+							$meta_item = $this->kapow_core_sanitize_serialised_data( $meta_item );
+						} else {
+							// Strip the tags, so we can check for HTML.
+							$meta_stripped = strip_tags( $meta_item );
+
+							// Tags have been removed, so it must have contained HTML!
+							if ( $meta_stripped !== $meta_item ) {
+
+								// Do the sanitization.
+								$meta_item = $this->kapow_core_sanitize_html( $meta_item );
+							}
+						}
+					}
+
+					// Update the array.
+					$new_meta[ $meta_key ] = $meta_item;
+				}
+
+				// Save the meta.
+				if ( 1 === count( $new_meta ) && isset( $new_meta[0] ) ) {
+					update_post_meta( $post_id, $key, $new_meta[0] );
+				} else {
+					update_post_meta( $post_id, $key, $new_meta );
+				}
+			} elseif ( ! empty( $meta ) ) {
+
+				// Set the meta item.
+				$meta_item = $meta;
+
+				// Check if meta is serialised.
+				// @codingStandardsIgnoreStart
+				$is_serialized = @unserialize( $meta_item );
+				// @codingStandardsIgnoreEnd
+
+				// Unserialize the meta.
+				if ( false !== $is_serialized ) {
+					$meta_item = $this->kapow_core_sanitize_serialised_data( $meta_item );
+				} else {
+					// Strip the tags, so we can check for HTML.
+					$meta_stripped = strip_tags( $meta_item );
+
+					// Tags have been removed, so it must have contained HTML!
+					if ( $meta_stripped !== $meta_item ) {
+
+						// Do the sanitization.
+						$meta_item = $this->kapow_core_sanitize_html( $meta_item );
+					}
+
+					// Save the meta.
+					update_post_meta( $post_id, $key, $meta_item );
+				}
+			}
+		}
 
 		// Add the hook back in.
-		add_action( 'wp_insert_post', 'kapow_core_sanitize_post_meta' );
+		add_action( 'wp_insert_post', array( $this, 'kapow_core_sanitize_post_meta' ) );
+	}
+
+	/**
+	 * Serialise meta data.
+	 *
+	 * Function to clean up meta data.
+	 *
+	 * @param  mixed $data Serialised data.
+	 * @return mixed       Serialised data.
+	 */
+	public function kapow_core_sanitize_serialised_data( $data ) {
+
+		// @codingStandardsIgnoreStart
+		$is_serialized = @unserialize( $data );
+		// @codingStandardsIgnoreEnd
+
+		// Unserialize the meta.
+		if ( false !== $is_serialized ) {
+			// @codingStandardsIgnoreStart
+			$data = unserialize( $data );
+			// @codingStandardsIgnoreEnd
+
+			foreach ( $data as &$unserialized_data ) {
+
+				if ( is_array( $unserialized_data ) ) {
+					$unserialized_data = $this->kapow_core_sanitize_serialised_data( $unserialized_data );
+				} else {
+
+					// Strip the tags, so we can check for HTML.
+					$meta_stripped = strip_tags( $unserialized_data );
+
+					// Tags have been removed, so it must have contained HTML!
+					if ( $meta_stripped !== $unserialized_data ) {
+
+						// Do the sanitization.
+						$unserialized_data = $this->kapow_core_sanitize_html( $unserialized_data );
+					}
+				}
+			}
+		}
+
+		return $data;
 	}
 
 	/**
@@ -148,8 +233,28 @@ class Post_Content_Clean {
 			),
 		);
 
+		// Filter the content tags, so we can add additional.
+		$allowed_tags = apply_filters( KAPOW_CORE_PREFIX . '_content_tags', $allowed_tags );
+
 		// Allowed protocols.
-		$allowed_protocols = array( 'http', 'https', 'mailto', 'tel' );
+		$allowed_protocols = array(
+			'http',
+			'https',
+			'mailto',
+			'tel',
+			'sms',
+			'market',
+			'geopoint',
+			'ymsgr',
+			'msnim',
+			'gtalk',
+			'skype',
+			'sip',
+			'whatsapp',
+		);
+
+		// Filter the protocols, so we can add additional.
+		$allowed_protocols = apply_filters( KAPOW_CORE_PREFIX . '_content_protocols', $allowed_protocols );
 
 		// Clean up the HTML tags.
 		$content = wp_kses( $content, $allowed_tags, $allowed_protocols );

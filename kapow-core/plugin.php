@@ -18,6 +18,18 @@
  */
 
 /**
+ * Configuration
+ *
+ * At the root of this project, there is a file called
+ * `kapow-core-config-template.php`. All config is done via filters (with
+ * default settings), this file lists all the hooks and filters, and has
+ * snippets that can be pasted into your project to override them.
+ *
+ * This file is not loaded by this plugin, it should be copied and referenced
+ * in your project.
+ */
+
+/**
  * Abort on Direct Call
  *
  * Abort if this file is called directly.
@@ -25,12 +37,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-/**
- * Configuration
- *
- * TODO.
- */
 
 /**
  * Constants
@@ -49,7 +55,6 @@ $tld = end( $tld );
 define( 'KAPOW_CORE_ROOT', __FILE__ );
 define( 'KAPOW_CORE_NAME', 'Kapow Core' );
 define( 'KAPOW_CORE_PREFIX', 'kapow_core' );
-define( 'KAPOW_CORE_PERMITTED_USERNAME', 'makedo' ); // TODO: This should be a filter.
 define( 'KAPOW_CORE_TLD', $tld );
 define( 'KAPOW_CORE_IS_LOCKOUT_GLOBAL', false ); // Should the limit login feature lock by username, or globally?
 define( 'KAPOW_CORE_MIN_PHP_VERSION', '5.6' );

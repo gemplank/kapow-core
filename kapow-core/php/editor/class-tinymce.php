@@ -20,6 +20,13 @@ class TinyMCE {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_remove_tiny_mce_styles', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_filter( 'tiny_mce_before_init', array( $this, 'kapow_core_tiny_mce_block_formats' ) );
 		add_filter( 'mce_buttons_2', array( $this, 'kapow_core_tiny_mce_editor_buttons' ) );
 	}
