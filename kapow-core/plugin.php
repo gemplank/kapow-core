@@ -55,7 +55,6 @@ $tld = end( $tld );
 define( 'KAPOW_CORE_ROOT', __FILE__ );
 define( 'KAPOW_CORE_NAME', 'Kapow Core' );
 define( 'KAPOW_CORE_PREFIX', 'kapow_core' );
-define( 'KAPOW_CORE_PERMITTED_USERNAME', 'makedo' ); // TODO: This should be a filter.
 define( 'KAPOW_CORE_TLD', $tld );
 define( 'KAPOW_CORE_IS_LOCKOUT_GLOBAL', false ); // Should the limit login feature lock by username, or globally?
 define( 'KAPOW_CORE_MIN_PHP_VERSION', '5.6' );

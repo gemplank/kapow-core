@@ -42,7 +42,8 @@ class Hosting {
 		if ( is_admin() ) {
 			global $menu, $submenu;
 
-			if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // WPCS: input var okay.
+			// @codingStandardsIgnoreStart
+			if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // @codingStandardsIgnoreEnd
 				remove_menu_page( 'wpengine-common' );
 			} else {
 
@@ -89,7 +90,8 @@ class Hosting {
 
 		$allow_robots = '1';
 
-		if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // WPCS: input var okay.
+		// @codingStandardsIgnoreStart
+		if ( strpos( $_SERVER['HTTP_HOST'], '.staging' ) !== false ) { // @codingStandardsIgnoreEnd
 			$allow_robots = '0';
 		}
 

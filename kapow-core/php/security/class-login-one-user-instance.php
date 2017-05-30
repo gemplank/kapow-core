@@ -20,6 +20,13 @@ class Login_One_User_Instance {
 	 * @since		0.1.0
 	 */
 	public function run() {
+
+		// Settings check.
+		$do_run = apply_filters( KAPOW_CORE_PREFIX . '_limit_login_instances', true );
+		if ( ! $do_run ) {
+			return;
+		}
+
 		add_action( 'setup_theme', array( $this, 'kapow_core_login_one_user_instance' ), 0 );
 	}
 

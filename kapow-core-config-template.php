@@ -270,3 +270,144 @@ add_filter( 'kapow_core_alter_hosting_menus', '__return_true' );
 add_filter( 'kapow_core_hosting_menu_permitted_user_names', function( $user_names ) {
 	return $user_names;
 }, 1 );
+
+/**
+ * POST
+ */
+
+/**
+ * Alter Post Slug
+ *
+ * If true, the post slug and labels will be changed.
+ */
+add_filter( 'kapow_core_alter_alter_post_slug', '__return_false' );
+
+/**
+ * Post Slug
+ *
+ * The post slug. Default is `blog`.
+ *
+ * @param string  $post_slug  Post slug.
+ */
+add_filter( 'kapow_core_post_slug', function( $post_slug ) {
+	return $post_slug;
+}, 1 );
+
+/**
+ * Post Label
+ *
+ * The post label. Default is `Post`.
+ *
+ * @param string  $post_name_label  Post label.
+ */
+add_filter( 'kapow_core_post_name_label', function( $post_name_label ) {
+	return $post_name_label;
+}, 1 );
+
+/**
+ * Post Labels
+ *
+ * The post labels. Defaults are:
+ *
+ * array(
+ *	 'name'                  => _x( 'Post', 'Post Type General Name', 'kapow-core' ),
+ *	 'singular_name'         => _x( 'Post', 'Post Type Singular Name', 'kapow-core' ),
+ *	 'menu_name'             => __( 'Post', 'kapow-core' ),
+ *	 'name_admin_bar'        => __( 'Posts', 'kapow-core' ),
+ *	 'archives'              => __( 'Post Archives', 'kapow-core' ),
+ *	 'parent_item_colon'     => __( 'Parent Post:', 'kapow-core' ),
+ *	 'all_items'             => __( 'All Posts', 'kapow-core' ),
+ *	 'add_new_item'          => __( 'Add New Post', 'kapow-core' ),
+ *	 'add_new'               => __( 'Add New', 'kapow-core' ),
+ *	 'new_item'              => __( 'New Post', 'kapow-core' ),
+ *	 'edit_item'             => __( 'Edit Post', 'kapow-core' ),
+ *	 'update_item'           => __( 'Update Post', 'kapow-core' ),
+ *	 'view_item'             => __( 'View Post', 'kapow-core' ),
+ *	 'search_items'          => __( 'Search Posts', 'kapow-core' ),
+ *	 'not_found'             => __( 'Not found', 'kapow-core' ),
+ *   'not_found_in_trash'    => __( 'Not found in Trash', 'kapow-core' ),
+ *	 'featured_image'        => __( 'Featured Image', 'kapow-core' ),
+ *	 'set_featured_image'    => __( 'Set featured image', 'kapow-core' ),
+ *	 'remove_featured_image' => __( 'Remove featured image', 'kapow-core' ),
+ *	 'use_featured_image'    => __( 'Use as featured image', 'kapow-core' ),
+ *	 'insert_into_item'      => __( 'Insert into Post', 'kapow-core' ),
+ *	 'uploaded_to_this_item' => __( 'Uploaded to this Post', 'kapow-core' ),
+ *	 'items_list'            => __( 'Posts list', 'kapow-core' ),
+ *	 'items_list_navigation' => __( 'Posts list navigation', 'kapow-core' ),
+ *	 'filter_items_list'     => __( 'Filter Posts list', 'kapow-core' ),
+ * );
+ *
+ * @param array  $post_name_labels  Array of labels.
+ */
+add_filter( 'kapow_core_post_name_labels', function( $post_name_labels ) {
+	return $post_name_labels;
+}, 1 );
+
+/**
+ * Post Description
+ *
+ * The post description. Default is `Posts`.
+ *
+ * @param string  $post_name_label  Post Description.
+ */
+add_filter( 'kapow_core_post_name_description', function( $post_name_description ) {
+	return $post_name_description;
+}, 1 );
+
+/**
+ * POST FORMATS
+ */
+
+/**
+ * Remove Post Formats
+ *
+ * If true, post formats will be removed.
+ */
+add_filter( 'kapow_core_remove_post_formats', '__return_true' );
+
+/**
+ * SECURITY
+ */
+
+/**
+ * Limit Login Attempts
+ *
+ * If true, login attempts will be limited.
+ */
+add_filter( 'kapow_core_limit_login_attempts', '__return_true' );
+
+/**
+ * Limit Login Instances
+ *
+ * If true, login instances will be limited.
+ */
+add_filter( 'kapow_core_limit_login_instances', '__return_true' );
+
+/**
+ * USER
+ */
+
+/**
+ * Remove Admin Bar
+ *
+ * If true, the admin bar will be removed for all but admins (by default)
+ */
+add_filter( 'kapow_core_remove_admin_bar', '__return_false' );
+
+/**
+ * Admin Bar Permitted user roles
+ *
+ * The roles that are allowed to see the admin bar.
+ *
+ * Example:
+ *
+ * To add in additonal user roles, just insert them into the array.
+ *
+ * `$permitted_user_roles[] = 'editor';`
+ * `return $permitted_user_roles;`
+ *
+ * @param array  $permitted_user_roles  Array of permitted user roles.
+ */
+add_filter( 'kapow_core_admin_bar_permitted_user_roles', function( $permitted_user_roles ) {
+	return $permitted_user_roles;
+}, 1 );
