@@ -1,0 +1,184 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Kapow Core\n"
+"POT-Creation-Date: 2017-05-31 18:04+0100\n"
+"PO-Revision-Date: 2017-05-31 18:04+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: plugin.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: en\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: php/class-notices-admin.php:43
+#, php-format
+msgid ""
+"The %1$sKapow Core%2$s plugin works much better when you %3$sinstall and "
+"activate the Shortcode UI plugin%4$s."
+msgstr ""
+
+#: php/class-settings.php:47
+msgid "Example Section Heading"
+msgstr ""
+
+#: php/class-settings.php:54
+msgid "Example Field Label:"
+msgstr ""
+
+#: php/class-settings.php:81
+msgid "This is an example field."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: php/class-settings.php:102 php/class-settings.php:103
+#: php/class-settings.php:118
+msgid "Kapow Core"
+msgstr ""
+
+#: php/class-settings.php:137
+msgid "Settings"
+msgstr ""
+
+#: php/post/class-post-slug.php:54
+msgctxt "Post Type General Name"
+msgid "Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:55
+msgctxt "Post Type Singular Name"
+msgid "Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:56 php/post/class-post-slug.php:81
+msgid "Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:57 php/post/class-post-slug.php:82
+msgid "Posts"
+msgstr ""
+
+#: php/post/class-post-slug.php:58
+msgid "Post Archives"
+msgstr ""
+
+#: php/post/class-post-slug.php:59
+msgid "Parent Post:"
+msgstr ""
+
+#: php/post/class-post-slug.php:60
+msgid "All Posts"
+msgstr ""
+
+#: php/post/class-post-slug.php:61
+msgid "Add New Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:62
+msgid "Add New"
+msgstr ""
+
+#: php/post/class-post-slug.php:63
+msgid "New Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:64
+msgid "Edit Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:65
+msgid "Update Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:66
+msgid "View Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:67
+msgid "Search Posts"
+msgstr ""
+
+#: php/post/class-post-slug.php:68
+msgid "Not found"
+msgstr ""
+
+#: php/post/class-post-slug.php:69
+msgid "Not found in Trash"
+msgstr ""
+
+#: php/post/class-post-slug.php:70
+msgid "Featured Image"
+msgstr ""
+
+#: php/post/class-post-slug.php:71
+msgid "Set featured image"
+msgstr ""
+
+#: php/post/class-post-slug.php:72
+msgid "Remove featured image"
+msgstr ""
+
+#: php/post/class-post-slug.php:73
+msgid "Use as featured image"
+msgstr ""
+
+#: php/post/class-post-slug.php:74
+msgid "Insert into Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:75
+msgid "Uploaded to this Post"
+msgstr ""
+
+#: php/post/class-post-slug.php:76
+msgid "Posts list"
+msgstr ""
+
+#: php/post/class-post-slug.php:77
+msgid "Posts list navigation"
+msgstr ""
+
+#: php/post/class-post-slug.php:78
+msgid "Filter Posts list"
+msgstr ""
+
+#: php/security/class-limit-login-attempts.php:104
+#, php-format
+msgid ""
+"%1$sWARNING%2$s: You have attempted to login incorrectly too many times. You "
+"will be able to try again in %3$s."
+msgstr ""
+
+#: plugin.php:71
+#, php-format
+msgid ""
+"Your web-server is running an un-supported version of PHP. Please upgrade to "
+"version %1$s  or higher to avoid potential issues with %2$s and other "
+"Wordpress plugins."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/mkdo/kapow-core"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A brief description of the plugin."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Make Do <hello@makedo.net>"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://makedo.net"
+msgstr ""
