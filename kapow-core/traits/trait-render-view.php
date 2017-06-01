@@ -54,7 +54,6 @@ trait Trait_Render_View {
 			if ( ! file_exists( $view_template_folder . $file_name . '.php' ) ) {
 				$template_path = $view_template_folder . $file_name . '.php';
 			}
-
 		}
 
 		return $template_path;

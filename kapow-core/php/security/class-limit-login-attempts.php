@@ -94,18 +94,20 @@ class Limit_Login_Attempts {
 		}
 
 		if ( get_transient( $this->transient_name ) ) {
-	        $datas = get_transient( $this->transient_name );
+			$datas = get_transient( $this->transient_name );
 
-	        if ( $datas['tried'] >= $this->failed_login_limit ) {
-	            $until = get_option( '_transient_timeout_' . $this->transient_name );
-	            $time = $this->when( $until );
+			if ( $datas['tried'] >= $this->failed_login_limit ) {
+				$until = get_option( '_transient_timeout_' . $this->transient_name );
+				$time = $this->when( $until );
 
-	            // Display error message to the user when limit is reached.
-				wp_die( sprintf( esc_html__( '%1$sWARNING%2$s: You have attempted to login incorrectly too many times. You will be able to try again in %3$s.', 'mkdo-droplets' ), '<strong>', '</strong>', esc_html( $time ) ) );
-	        }
-	    }
+				// Display error message to the user when limit is reached.
+				wp_die( sprintf(
+					/* translators: 1: opening <strong> tag 2: closing <strong> tag 3: time until login permitted */
+				esc_html__( '%1$sWARNING%2$s: You have attempted to login incorrectly too many times. You will be able to try again in %3$s.', 'kapow-core' ), '<strong>', '</strong>', esc_html( $time ) ) );
+			}
+		}
 
-	    return $user;
+		return $user;
 	}
 
 	/**
@@ -114,19 +116,19 @@ class Limit_Login_Attempts {
 	 * @param  string $username The Username.
 	 */
 	public function login_failed( $username ) {
-	    if ( get_transient( $this->transient_name ) ) {
-	        $datas = get_transient( $this->transient_name );
-	        $datas['tried']++;
+		if ( get_transient( $this->transient_name ) ) {
+			$datas = get_transient( $this->transient_name );
+			$datas['tried']++;
 
-	        if ( $datas['tried'] <= $this->failed_login_limit ) {
-	            set_transient( $this->transient_name, $datas, $this->lockout_duration );
+			if ( $datas['tried'] <= $this->failed_login_limit ) {
+				set_transient( $this->transient_name, $datas, $this->lockout_duration );
 			}
-	    } else {
-	        $datas = array(
-	            'tried' => 1,
-	        );
-	        set_transient( $this->transient_name, $datas , $this->lockout_duration );
-	    }
+		} else {
+			$datas = array(
+				'tried' => 1,
+			);
+			set_transient( $this->transient_name, $datas , $this->lockout_duration );
+		}
 	}
 
 
@@ -139,35 +141,35 @@ class Limit_Login_Attempts {
 	 * @return string       Return string
 	 */
 	private function when( $time ) {
-	    if ( ! $time ) {
-	        return;
+		if ( ! $time ) {
+			return;
 		}
 
-	    $right_now = time();
+		$right_now = time();
 
-	    $diff = abs( $right_now - $time );
+		$diff = abs( $right_now - $time );
 
-	    $second = 1;
-	    $minute = $second * 60;
-	    $hour = $minute * 60;
-	    $day = $hour * 24;
+		$second = 1;
+		$minute = $second * 60;
+		$hour = $minute * 60;
+		$day = $hour * 24;
 
-	    if ( $diff < $minute ) {
-	        return floor( $diff / $second ) . ' seconds';
+		if ( $diff < $minute ) {
+			return floor( $diff / $second ) . ' seconds';
 		}
 
-	    if ( $diff < $minute * 2 ) {
-	        return 'about 1 minute ago';
+		if ( $diff < $minute * 2 ) {
+			return 'about 1 minute ago';
 		}
 
-	    if ( $diff < $hour ) {
-	        return floor( $diff / $minute ) . ' minutes';
+		if ( $diff < $hour ) {
+			return floor( $diff / $minute ) . ' minutes';
 		}
 
-	    if ( $diff < $hour * 2 ) {
-	        return 'about 1 hour';
+		if ( $diff < $hour * 2 ) {
+			return 'about 1 hour';
 		}
 
-	    return floor( $diff / $hour ) . ' hours';
+		return floor( $diff / $hour ) . ' hours';
 	}
 }

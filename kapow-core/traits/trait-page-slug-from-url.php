@@ -58,9 +58,11 @@ trait Trait_Page_Slug_From_URL {
 			$slug = $wp_query->query_vars['name'];
 		} else {
 			// If all else fails, grab it from the URL.
-			$url  = strtok( $_SERVER["REQUEST_URI"], '?' );
-			$url  = trim( $url, '/' );
-			$slug = substr( $url, strrpos( $url, '/' ) + 1 );
+			if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
+				$url  = strtok( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), '?' );
+				$url  = trim( $url, '/' );
+				$slug = substr( $url, strrpos( $url, '/' ) + 1 );
+			}
 		}
 
 		return $slug;

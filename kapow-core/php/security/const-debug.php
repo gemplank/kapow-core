@@ -10,6 +10,7 @@
  */
 
 // Debug.
+// @codingStandardsIgnoreStart
 if ( 'dev' === KAPOW_CORE_TLD ) {
 
 	// Display PHP errors.
@@ -40,3 +41,4 @@ if ( 'dev' === KAPOW_CORE_TLD ) {
 		define( 'SAVEQUERIES', true );
 	}
 }
+// @codingStandardsIgnoreEnds

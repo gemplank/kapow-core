@@ -68,7 +68,9 @@ define( 'KAPOW_CORE_MIN_PHP_VERSION', '5.6' );
  * be using a version of PHP that does not support those features.
  */
 if ( version_compare( phpversion(), KAPOW_CORE_MIN_PHP_VERSION, '<' ) ) {
-	$php_version_notice = sprintf( __( 'Your web-server is running an un-supported version of PHP. Please upgrade to version %1$s  or higher to avoid potential issues with %2$s and other Wordpress plugins.', 'kapow-core' ), KAPOW_CORE_MIN_PHP_VERSION, KAPOW_CORE_NAME );
+	$php_version_notice = sprintf(
+		/* translators: 1: PHP version 2: plugin name */
+	__( 'Your web-server is running an un-supported version of PHP. Please upgrade to version %1$s  or higher to avoid potential issues with %2$s and other Wordpress plugins.', 'kapow-core' ), KAPOW_CORE_MIN_PHP_VERSION, KAPOW_CORE_NAME );
 	wp_die( esc_html( $php_version_notice ) );
 }
 

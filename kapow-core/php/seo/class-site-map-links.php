@@ -85,7 +85,7 @@ class Site_Map_Links {
 					}
 				}
 			}
-		}
+		} // End if().
 		return $url;
 	}
 

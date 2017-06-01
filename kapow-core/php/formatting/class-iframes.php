@@ -99,7 +99,7 @@ class IFrames {
 
 			// Update the content.
 			$content  = str_replace( $match, $height_modified, $content );
-		}
+		} // End foreach().
 
 		return $content;
 	}

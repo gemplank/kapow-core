@@ -78,7 +78,7 @@ class Hosting {
 					remove_submenu_page( 'wpengine-common', 'wpe-support-portal' );
 				}
 			}
-		}
+		} // End if().
 	}
 
 	/**

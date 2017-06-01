@@ -27,7 +27,7 @@ trait Trait_Format_Bytes {
 	 */
 	public static function format_bytes( $bytes, $precision = 0 ) {
 		$base     = log( floatval( $bytes ), 1024 );
-	    $suffixes = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' );
-	    return round( pow( 1024, $base - floor( $base ) ), $precision ) . $suffixes[ floor( $base ) ];
+		$suffixes = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' );
+		return round( pow( 1024, $base - floor( $base ) ), $precision ) . $suffixes[ floor( $base ) ];
 	}
 }

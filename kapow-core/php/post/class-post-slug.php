@@ -117,17 +117,19 @@ class Post_Slug {
 			array(
 				'label'           => $this->post_name_label,
 				'description'     => $this->post_name_description,
-			    'labels'          => $this->post_name_labels,
+				'labels'          => $this->post_name_labels,
 				'menu_position'   => 5,
-			    'public'          => true,
-			    '_builtin'        => false,
-			    '_edit_link'      => 'post.php?post=%d',
-			    'capability_type' => 'post',
-			    'map_meta_cap'    => true,
-			    'hierarchical'    => false,
-			    'rewrite'         => array( 'slug' => $this->post_slug ),
-			    'query_var'       => false,
-			    'supports'        => array(
+				'public'          => true,
+				'_builtin'        => false,
+				'_edit_link'      => 'post.php?post=%d',
+				'capability_type' => 'post',
+				'map_meta_cap'    => true,
+				'hierarchical'    => false,
+				'rewrite'         => array(
+					'slug' => $this->post_slug,
+				),
+				'query_var'       => false,
+				'supports'        => array(
 					'title',
 					'editor',
 					'author',
@@ -179,7 +181,8 @@ class Post_Slug {
 						$GLOBALS['post']         = $post; // WPCS: override ok.
 						$GLOBALS['post_id']      = $post->ID; // WPCS: override ok.
 						$GLOBALS['the_post']     = $post; // WPCS: override ok.
-						$GLOBALS['wp_query']     = $wp_query = new \WP_Query( $args ); // WPCS: override ok.
+						$wp_query = new \WP_Query( $args ); // WPCS: override ok.
+						$GLOBALS['wp_query']     = $wp_query; // WPCS: override ok.
 						$GLOBALS['wp_the_query'] = $GLOBALS['wp_query']; // WPCS: override ok.
 
 					} else {
@@ -208,12 +211,13 @@ class Post_Slug {
 							status_header( 200 );
 
 							$query->is_post_type_archive = null;
-							$GLOBALS['wp_query']         = $wp_query = $query; // WPCS: override ok.
+							$wp_query = $query; // WPCS: override ok.
+							$GLOBALS['wp_query']         = $wp_query; // WPCS: override ok.
 							$GLOBALS['wp_the_query']     = $GLOBALS['wp_query']; // WPCS: override ok.
 						}
-					}
-				}
-			}
-		}
+					} // End if().
+				} // End if().
+			} // End if().
+		} // End if().
 	}
 }

@@ -23,6 +23,7 @@ trait Trait_Get_Icons {
 	 */
 	public static function get_icons() {
 
+		// @codingStandardsIgnoreStart
 		$icons = array();
 		$icons[] = array( 'id' => 'glass' , 'name' => 'Glass' );
 		$icons[] = array( 'id' => 'music' , 'name' => 'Music' );
@@ -699,6 +700,7 @@ trait Trait_Get_Icons {
 		$icons[] = array( 'id' => 'superpowers' , 'name' => 'Superpowers' );
 		$icons[] = array( 'id' => 'wpexplorer' , 'name' => 'WPExplorer' );
 		$icons[] = array( 'id' => 'meetup' , 'name' => 'Meetup' );
+		// @codingStandardsIgnoreEnd
 
 		return $icons;
 	}

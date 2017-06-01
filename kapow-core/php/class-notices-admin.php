@@ -40,7 +40,9 @@ class Notices_Admin {
 		// the `run()` function.
 		if ( ! function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
 			$install_url = admin_url( '/plugin-install.php?s=Shortcode%20UI&tab=search&type=term' );
-			$warning     = sprintf( __( 'The %1$sKapow Core%2$s plugin works much better when you %3$sinstall and activate the Shortcode UI plugin%4$s.', 'kapow-core' ), '<strong>', '</strong>', '<a href="' . esc_url( $install_url ) . '" target="_blank">', '</a>' );
+			$warning     = sprintf(
+				/* translators: 1: opening <strong> tag 2: closing </strong tag 3: opening anchor tag 4: closing anchor tag. */
+			__( 'The %1$sKapow Core%2$s plugin works much better when you %3$sinstall and activate the Shortcode UI plugin%4$s.', 'kapow-core' ), '<strong>', '</strong>', '<a href="' . esc_url( $install_url ) . '" target="_blank">', '</a>' );
 			?>
 			<div class="notice notice-warning is-dismissible">
 			<p>

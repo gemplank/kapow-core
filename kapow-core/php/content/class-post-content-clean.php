@@ -138,8 +138,8 @@ class Post_Content_Clean {
 					// Save the meta.
 					update_post_meta( $post_id, $key, $meta_item );
 				}
-			}
-		}
+			} // End if().
+		} // End foreach().
 
 		// Add the hook back in.
 		add_action( 'wp_insert_post', array( $this, 'kapow_core_sanitize_post_meta' ) );

@@ -12,7 +12,7 @@ namespace kapow\kapow_core;
 /**
  * Get tags associated with category
  */
-trait Trait_Get_Category_tags {
+trait Trait_Get_Category_Tags {
 
 	/**
 	 * Get tags associated with category
