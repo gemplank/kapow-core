@@ -46,11 +46,15 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // @codingStandardsIgnoreStart
-$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-// @codingStandardsIgnoreEnd
+if ( ! empty( $_SERVER['HTTP_HOST'] ) && $_SERVER['REQUEST_URI'] ) {
+	$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-$tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
-$tld = end( $tld );
+	$tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
+	$tld = end( $tld );
+} else {
+	$tld = 'dev';
+}
+// @codingStandardsIgnoreEnd
 
 define( 'KAPOW_CORE_ROOT', __FILE__ );
 define( 'KAPOW_CORE_NAME', 'Kapow Core' );
