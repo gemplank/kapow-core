@@ -1,14 +1,19 @@
 # Kapow Core
 
-The main plugin for Kapow! Stick this in your my-plugins folder and enjoy!
+The Core Plugin for the Kapow! boilerplate for bespoke WordPress site development. Stick this in your mu-plugins folder and enjoy!
+
+## [Installation](#installation)
+
+If you intend to use the Kapow! Setup script to scaffold a new project, this plugin will be automatically installed and activated for you.
+
+If you're scaffolding a project manually, move the `kapow-core` folder found inside this repository into the `wp-content/mu-plugins/` directory inside your Kapow! project, and activate the plugin from the WordPress back-end.
 
 ## [Workflow](#workflow)
 
 The plugin comes with its own Grunt based workflow based on [Kapow Grunt](https://github.com/mkdo/kapow-grunt). You don't have to use it, but it will
 help you organise your assets better if you do.
 
-To get this up and running, when you first download the project run the following
-commands from the root of the plugin:
+To get this up and running, when you first download the project run the following commands from the root of the plugin:
 
 `cd tools`  
 `sudo npm install`  
