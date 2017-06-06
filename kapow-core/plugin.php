@@ -127,6 +127,7 @@ require_once 'php/post/class-post-slug.php';
 require_once 'php/class-controller-security.php';
 require_once 'php/security/class-limit-login-attempts.php';
 require_once 'php/security/class-login-one-user-instance.php';
+require_once 'php/security/class-x-frame-options.php';
 
 // SEO.
 require_once 'php/class-controller-seo.php';
@@ -179,6 +180,7 @@ use kapow\kapow_core\Post_Slug;
 use kapow\kapow_core\Controller_Security;
 use kapow\kapow_core\Limit_Login_Attempts;
 use kapow\kapow_core\Login_One_User_Instance;
+use kapow\kapow_core\X_Frame_Options;
 
 // SEO.
 use kapow\kapow_core\Controller_SEO;
@@ -238,9 +240,11 @@ $controller_permalinks = new Controller_Permalinks(
 // Security.
 $limit_login_attempts    = new Limit_Login_Attempts();
 $login_one_user_instance = new Login_One_User_Instance();
+$x_frame_options         = new X_Frame_Options();
 $controller_security     = new Controller_Security(
 	$limit_login_attempts,
-	$login_one_user_instance
+	$login_one_user_instance,
+	$x_frame_options
 );
 
 // SEO.

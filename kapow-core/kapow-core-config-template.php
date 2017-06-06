@@ -384,6 +384,13 @@ add_filter( 'kapow_core_limit_login_attempts', '__return_true' );
 add_filter( 'kapow_core_limit_login_instances', '__return_true' );
 
 /**
+ * Add X Frame Options Header
+ *
+ * If true, the header will be included.
+ */
+add_filter( 'kapow_core_x_frame_options_header', '__return_true' );
+
+/**
  * USER
  */
 

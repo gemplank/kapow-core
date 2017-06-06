@@ -1,0 +1,12 @@
+# Git Ignore for Kapow Core.
+# -----------------------------------------------------------------------------
+
+# Flotsam & Jetsam.
+# -------------------------------------
+.DS_Store
+**/.DS_Store
+
+# Dependencies.
+# -------------------------------------
+bower_components
+node_modules
