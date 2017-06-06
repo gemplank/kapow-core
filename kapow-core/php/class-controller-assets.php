@@ -71,8 +71,8 @@ class Controller_Assets {
 	 */
 	public function public_enqueue_scripts() {
 
-		$do_public_enqueue     = apply_filters( KAPOW_CORE_PREFIX . '_do_public_enqueue', true );
-		$do_public_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_public_css_enqueue', true );
+		$do_public_enqueue     = apply_filters( KAPOW_CORE_PREFIX . '_do_public_enqueue', false );
+		$do_public_css_enqueue = apply_filters( KAPOW_CORE_PREFIX . '_do_public_css_enqueue', false );
 		$do_public_js_enqueue  = apply_filters( KAPOW_CORE_PREFIX . '_do_public_js_enqueue', false );
 
 		/* CSS */
