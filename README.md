@@ -1,3 +1,5 @@
+![Kapow! Logo Banner](https://raw.githubusercontent.com/kapow-wp/kapow-core/master/kapow-full-logo-x2.png)
+
 # Kapow Core
 
 The Core Plugin for the Kapow! boilerplate for bespoke WordPress site development. Stick this in your mu-plugins folder and enjoy!
