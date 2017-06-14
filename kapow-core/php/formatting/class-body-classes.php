@@ -49,6 +49,30 @@ class Body_Classes {
 			$classes[] = 'slug-' . $post->post_name;
 		}
 
+		// Add the slug of the parent page if this is a single post/page.
+		if ( is_singular() ) {
+
+			// Get an array of Ancestors and Parents if they exist.
+			$ancestors = get_post_ancestors( $post->ID );
+
+			if ( ! empty( $ancestors ) ) {
+
+				// Get the ID of the immediate parent and the farthest ancestor.
+				$parent_id   = ($ancestors) ? $ancestors[0]: '';
+				$ancestor_id = ($ancestors) ? $ancestors[ count( $ancestors ) -1 ]: '';
+
+				// Parent.
+				$parent    = get_post( $id );
+				$classes[] = 'slug-parent-' . $parent->post_name;
+
+				// Ancestor.
+				if ( ! empty( $ancestor_id ) && $parent_id !== $ancestor_id ) {
+					$ancestor  = get_post( $id );
+					$classes[] = 'slug-ancestor-' . $ancestor->post_name;
+				}
+			}
+		}
+		
 		return $classes;
 	}
 }
