@@ -62,12 +62,12 @@ class Body_Classes {
 				$ancestor_id = ($ancestors) ? $ancestors[ count( $ancestors ) -1 ]: '';
 
 				// Parent.
-				$parent    = get_post( $id );
+				$parent    = get_post( $parent_id );
 				$classes[] = 'slug-parent-' . $parent->post_name;
 
 				// Ancestor.
 				if ( ! empty( $ancestor_id ) && $parent_id !== $ancestor_id ) {
-					$ancestor  = get_post( $id );
+					$ancestor  = get_post( $ancestor_id );
 					$classes[] = 'slug-ancestor-' . $ancestor->post_name;
 				}
 			}
