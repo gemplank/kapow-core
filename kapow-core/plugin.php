@@ -52,7 +52,7 @@ if ( ! empty( $_SERVER['HTTP_HOST'] ) && $_SERVER['REQUEST_URI'] ) {
 	$tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
 	$tld = end( $tld );
 } else {
-	$tld = 'dev';
+	$tld = 'local';
 }
 // @codingStandardsIgnoreEnd
 
