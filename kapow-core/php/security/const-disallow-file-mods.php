@@ -13,6 +13,6 @@
 // Disable Plugin and Theme Update and Installation
 //
 // Unless our domain ends in .dev (development environment).
-if ( 'dev' !== KAPOW_CORE_TLD && ! defined( 'DISALLOW_FILE_MODS' ) ) {
+if ( 'local' !== KAPOW_CORE_TLD && ! defined( 'DISALLOW_FILE_MODS' ) ) {
 	define( 'DISALLOW_FILE_MODS', true );
 }
