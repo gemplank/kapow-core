@@ -84,7 +84,7 @@ if ( version_compare( phpversion(), KAPOW_CORE_MIN_PHP_VERSION, '<' ) ) {
  * WordPress lets people do things that they should never do in a controlled
  * environment. Lets fix that.
  */
-require_once 'php/security/const-debug.php';              // Enable Debug when on .dev domain only.
+require_once 'php/security/const-debug.php';              // Enable Debug when on .local domain only.
 require_once 'php/security/const-disallow-file-edit.php'; // Disallow file edit.
 require_once 'php/security/const-disallow-file-mods.php'; // Disallow file installs unless on .dev domain.
 

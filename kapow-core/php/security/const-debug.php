@@ -11,7 +11,7 @@
 
 // Debug.
 // @codingStandardsIgnoreStart
-if ( 'dev' === KAPOW_CORE_TLD ) {
+if ( 'local' === KAPOW_CORE_TLD ) {
 
 	// Display PHP errors.
 	@ini_set( 'display_errors', 1 );
