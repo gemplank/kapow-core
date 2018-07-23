@@ -49,8 +49,9 @@ if ( ! defined( 'WPINC' ) ) {
 if ( ! empty( $_SERVER['HTTP_HOST'] ) && $_SERVER['REQUEST_URI'] ) {
 	$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-	$tld = explode( '.', wp_parse_url( $url, PHP_URL_HOST ) );
-	$tld = end( $tld );
+	$parsed_url = wp_parse_url( $url, PHP_URL_HOST );
+	$url_chunks = explode( '.', $parsed_url['host'] );
+	$tld = end( $url_chunks );
 } else {
 	$tld = 'test';
 }
