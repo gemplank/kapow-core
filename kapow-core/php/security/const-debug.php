@@ -11,7 +11,7 @@
 
 // Debug.
 // @codingStandardsIgnoreStart
-if ( 'local' === KAPOW_CORE_TLD ) {
+if ( 'test' === KAPOW_CORE_TLD ) {
 
 	// Display PHP errors.
 	@ini_set( 'display_errors', 1 );
@@ -28,7 +28,7 @@ if ( 'local' === KAPOW_CORE_TLD ) {
 
 	// Display Debug Errors.
 	if ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
-		define( 'WP_DEBUG_DISPLAY', true );
+		define( 'WP_DEBUG_DISPLAY', false );
 	}
 
 	// Use dev core scripts.
