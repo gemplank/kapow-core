@@ -231,6 +231,10 @@ class Post_Content_Clean {
 				'id'    => array(),
 				'class' => array(),
 			),
+			'figure'     => array(
+				'id'    => array(),
+				'class' => array(),
+			),
 		);
 
 		// Filter the content tags, so we can add additional.
