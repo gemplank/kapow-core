@@ -29,6 +29,11 @@ class Hosting {
 
 		add_action( 'admin_menu', array( $this, 'kapow_core_change_wp_engine_name' ), 9999 );
 		add_filter( 'pre_option_blog_public', array( $this, 'kapow_core_override_robots_txt_save' ) );
+		
+		// Only run this action if the install is multisite.
+		if ( is_multisite() ) {
+			add_action( 'network_admin_menu', array( $this, 'kapow_core_change_wp_engine_name' ), 9999 );
+		}
 	}
 
 	/**
